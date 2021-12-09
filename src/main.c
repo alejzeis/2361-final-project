@@ -2,7 +2,14 @@
  * Main entrypoint for the Alarm Clock Program
  */
 
-#include "xc.h"
+#include "app_config.h"
+#include "wifi.h"
+#include "djolib.h"
+#include "bsp/nm_bsp.h"
+#include "driver/m2m_wifi.h"
+#include "common/nm_common.h"
+
+#include <xc.h>
 
 // CW1: FLASH CONFIGURATION WORD 1 (see PIC24 Family Reference Manual 24.1)
 #pragma config ICS = PGx1          // Comm Channel Select (Emulator EMUC1/EMUD1 pins are shared with PGC1/PGD1)
@@ -20,7 +27,26 @@
                                        // Fail-Safe Clock Monitor is enabled)
 #pragma config FNOSC = FRCPLL      // Oscillator Select (Fast RC Oscillator with PLL module (FRCPLL))
 
+void generalSetup(void) {
+    // Set to maximum clockspeed
+    CLKDIVbits.RCDIV = 0; // Set RCDIV=1:1 (default is 2:1) 32 MHz or FCY/2=16M
+    
+    AD1PCFG = 0x9fff; //sets all pins to digital I/O
+
+#ifdef LCD_DEBUGGING
+    I2C_init();
+    lcd_init();
+#endif
+    
+    wifiModuleInit(); // Initialize and prepare for usage of the wifi module (see wifi.c)
+}
+
 int main() {
-	while(1); // Dummy forever loop
+    generalSetup();
+    
+    // Main application loop, handle polling things and such
+	while(1) {
+        wifiModulePollEvents();
+    }
 	return 1;
 }
