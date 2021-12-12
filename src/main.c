@@ -48,5 +48,6 @@ int main() {
 	while(1) {
         wifiModulePollEvents();
     }
+    
 	return 1;
 }
