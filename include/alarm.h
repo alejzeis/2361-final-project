@@ -10,6 +10,18 @@
 #ifndef ALARM_H
 #define	ALARM_H
 
+/*
+ * movements
+ * track the number of detected movements after alarm onset:
+ */ 
+extern volatile unsigned int movements;
+
+/* 
+ * t2_overflows
+ * overflows track the alarm time.
+ */
+extern volatile unsigned long t2_overflows;
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
@@ -24,10 +36,10 @@ extern "C" {
     
     void init_alarm( void );
     void init_PIR( void );
+    void set_alarm( int h , int m );
 
 #ifdef	__cplusplus
 }
 #endif
 
 #endif	/* ALARM_H */
-

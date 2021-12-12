@@ -11,8 +11,6 @@
 #include "wait_head.h"
 
 
-
-
 #pragma config ICS = PGx1          // Comm Channel Select (Emulator EMUC1/EMUD1 pins are shared with PGC1/PGD1)
 #pragma config FWDTEN = OFF        // Watchdog Timer Enable (Watchdog Timer is disabled)
 #pragma config GWRP = OFF          // General Code Segment Write Protect (Writes to program memory are allowed)

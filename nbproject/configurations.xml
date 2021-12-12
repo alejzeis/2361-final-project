@@ -49,6 +49,7 @@
         <itemPath>include/djolib.h</itemPath>
         <itemPath>include/wifi.h</itemPath>
         <itemPath>include/config.h</itemPath>
+        <itemPath>include/alarm.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -107,6 +108,7 @@
         <itemPath>src/garrettmain.c</itemPath>
         <itemPath>src/djolib.c</itemPath>
         <itemPath>src/wifi.c</itemPath>
+        <itemPath>src/alarm.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
