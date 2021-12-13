@@ -6,8 +6,8 @@
                    projectFiles="true">
       <itemPath>welsch_lab2b_asmlib.s</itemPath>
       <itemPath>stepper.h</itemPath>
+      <itemPath>wait_head_1.h</itemPath>
       <itemPath>alarm.h</itemPath>
-      <itemPath>wait_head.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -34,7 +34,11 @@
         <targetDevice>PIC24FJ64GA002</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
+<<<<<<< Updated upstream
         <platformTool>PK3OBPlatformTool</platformTool>
+=======
+        <platformTool>noID</platformTool>
+>>>>>>> Stashed changes
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.70</languageToolchainVersion>
         <platform>2</platform>

@@ -13,6 +13,9 @@
  * Timers: Timer2, Timer3.
  * Hardware: Passive Infrared Sensor 
  * 
+ * (DREAM)
+ * We can display calendar
+ * 
  * Timer2 has two purposes:
  * (1) Keep track of time throughout the day with overflows (t2_overflows)
  *     t2_overflows is reset as soon as midnight is reached.
@@ -27,6 +30,13 @@
  * 
  * 
  */
+
+// Set time externally: Set the number of T2_overflows we are at, in order to
+/* set the 
+ * 
+ * 
+ */
+// 
 
 #include "include/alarm.h"
 #include "xc.h"
@@ -49,10 +59,17 @@ void __attribute__((interrupt, auto_psv)) _IC5Interrupt ( void )
     _IC5IF = 0;
 }
 
+
+
 void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
 {
     _T2IF = 0;
     t2_overflows++;
+    
+    if (t2_overflows == 60)
+    {
+        
+    }
 }
 
 void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
@@ -62,13 +79,18 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
 
 // Timer Associated. 
 
+void init_t2( void )
+{
+    T2CON = 0; 
+}
+
 void init_alarm( void )
 {
     __builtin_write_OSCCONL(OSCCON & 0xbf);
     RPOR4bits.RP8R = 22; // OC5 output = RP8
     __builtin_write_OSCCONL(OSCCON | 0x40);
     
-    T3CON = 0;
+    T3CON = 0; // 
     TMR3 = 0;
     
     // set RP8 as output.
@@ -102,4 +124,6 @@ void set_alarm( int h, int m )
     // calculate the needed IC1 timer value based on h and m.
     // there are 86,400 seconds in a day.
     
+    
+    t2_overflows = 
 }
