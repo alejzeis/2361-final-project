@@ -4,64 +4,53 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-        <itemPath>include/bsp/nm_bsp.h</itemPath>
-        <itemPath>include/bsp/nm_bsp_arduino.h</itemPath>
-        <itemPath>include/bsp/nm_bsp_avr.h</itemPath>
-        <itemPath>include/bsp/nm_bsp_internal.h</itemPath>
-        <itemPath>include/bsp/nm_bsp_samd21.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f2" displayName="bus_wrapper" projectFiles="true">
-        <itemPath>include/bus_wrapper/nm_bus_wrapper.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f3" displayName="common" projectFiles="true">
-        <itemPath>include/common/nm_common.h</itemPath>
-        <itemPath>include/common/nm_debug.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f4" displayName="driver" projectFiles="true">
-        <itemPath>include/driver/ecc_types.h</itemPath>
-        <itemPath>include/driver/m2m_ate_mode.h</itemPath>
-        <itemPath>include/driver/m2m_crypto.h</itemPath>
-        <itemPath>include/driver/m2m_hif.h</itemPath>
-        <itemPath>include/driver/m2m_ota.h</itemPath>
-        <itemPath>include/driver/m2m_periph.h</itemPath>
-        <itemPath>include/driver/m2m_ssl.h</itemPath>
-        <itemPath>include/driver/m2m_types.h</itemPath>
-        <itemPath>include/driver/m2m_wifi.h</itemPath>
-        <itemPath>include/driver/nmasic.h</itemPath>
-        <itemPath>include/driver/nmbus.h</itemPath>
-        <itemPath>include/driver/nmdrv.h</itemPath>
-        <itemPath>include/driver/nmi2c.h</itemPath>
-        <itemPath>include/driver/nmspi.h</itemPath>
-        <itemPath>include/driver/nmuart.h</itemPath>
-      </logicalFolder>
       <logicalFolder name="include" displayName="include" projectFiles="true">
         <logicalFolder name="bsp" displayName="bsp" projectFiles="true">
+          <itemPath>include/bsp/nm_bsp_arduino.h</itemPath>
+          <itemPath>include/bsp/nm_bsp_samd21.h</itemPath>
+          <itemPath>include/bsp/nm_bsp_internal.h</itemPath>
+          <itemPath>include/bsp/nm_bsp_avr.h</itemPath>
+          <itemPath>include/bsp/nm_bsp.h</itemPath>
         </logicalFolder>
         <logicalFolder name="bus_wrapper" displayName="bus_wrapper" projectFiles="true">
+          <itemPath>include/bus_wrapper/nm_bus_wrapper.h</itemPath>
         </logicalFolder>
         <logicalFolder name="common" displayName="common" projectFiles="true">
+          <itemPath>include/common/nm_debug.h</itemPath>
+          <itemPath>include/common/nm_common.h</itemPath>
         </logicalFolder>
         <logicalFolder name="driver" displayName="driver" projectFiles="true">
+          <itemPath>include/driver/nmdrv.h</itemPath>
+          <itemPath>include/driver/nmi2c.h</itemPath>
+          <itemPath>include/driver/m2m_crypto.h</itemPath>
+          <itemPath>include/driver/nmspi.h</itemPath>
+          <itemPath>include/driver/nmasic.h</itemPath>
+          <itemPath>include/driver/m2m_wifi.h</itemPath>
+          <itemPath>include/driver/ecc_types.h</itemPath>
+          <itemPath>include/driver/m2m_types.h</itemPath>
+          <itemPath>include/driver/m2m_ota.h</itemPath>
+          <itemPath>include/driver/nmuart.h</itemPath>
+          <itemPath>include/driver/nmbus.h</itemPath>
+          <itemPath>include/driver/m2m_periph.h</itemPath>
+          <itemPath>include/driver/m2m_hif.h</itemPath>
+          <itemPath>include/driver/m2m_ssl.h</itemPath>
+          <itemPath>include/driver/m2m_ate_mode.h</itemPath>
         </logicalFolder>
         <logicalFolder name="socket" displayName="socket" projectFiles="true">
+          <itemPath>include/socket/socket_internal.h</itemPath>
+          <itemPath>include/socket/m2m_socket_host_if.h</itemPath>
+          <itemPath>include/socket/socket.h</itemPath>
         </logicalFolder>
         <logicalFolder name="spi_flash" displayName="spi_flash" projectFiles="true">
+          <itemPath>include/spi_flash/spi_flash.h</itemPath>
+          <itemPath>include/spi_flash/spi_flash_map.h</itemPath>
         </logicalFolder>
+        <itemPath>include/app_config.h</itemPath>
+        <itemPath>include/djolib.h</itemPath>
+        <itemPath>include/wifi.h</itemPath>
+        <itemPath>include/config.h</itemPath>
+        <itemPath>include/alarm.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="f5" displayName="socket" projectFiles="true">
-        <itemPath>include/socket/m2m_socket_host_if.h</itemPath>
-        <itemPath>include/socket/socket.h</itemPath>
-        <itemPath>include/socket/socket_internal.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f6" displayName="spi_flash" projectFiles="true">
-      </logicalFolder>
-      <itemPath>include/wifi.h</itemPath>
-      <itemPath>include/config.h</itemPath>
-      <itemPath>include/djolib.h</itemPath>
-      <itemPath>include/app_config.h</itemPath>
-      <itemPath>include/spi_flash/spi_flash_map.h</itemPath>
-      <itemPath>include/spi_flash/spi_flash.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -70,44 +59,30 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-        <itemPath>src/bsp/nm_bsp_pic24.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f2" displayName="bus_wrapper" projectFiles="true">
-        <itemPath>src/bus_wrapper/nm_bus_wrapper_pic24.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f3" displayName="common" projectFiles="true">
-        <itemPath>src/common/nm_common.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f4" displayName="driver" projectFiles="true">
-        <itemPath>src/driver/m2m_ate_mode.c</itemPath>
-        <itemPath>src/driver/m2m_crypto.c</itemPath>
-        <itemPath>src/driver/m2m_hif.c</itemPath>
-        <itemPath>src/driver/m2m_ota.c</itemPath>
-        <itemPath>src/driver/m2m_periph.c</itemPath>
-        <itemPath>src/driver/m2m_ssl.c</itemPath>
-        <itemPath>src/driver/m2m_wifi.c</itemPath>
-        <itemPath>src/driver/nmasic.c</itemPath>
-        <itemPath>src/driver/nmbus.c</itemPath>
-        <itemPath>src/driver/nmdrv.c</itemPath>
-        <itemPath>src/driver/nmi2c.c</itemPath>
-        <itemPath>src/driver/nmspi.c</itemPath>
-        <itemPath>src/driver/nmuart.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f5" displayName="socket" projectFiles="true">
-        <itemPath>src/socket/socket.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f6" displayName="spi_flash" projectFiles="true">
-        <itemPath>src/spi_flash/spi_flash.c</itemPath>
-      </logicalFolder>
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <logicalFolder name="bsp" displayName="bsp" projectFiles="true">
+          <itemPath>src/bsp/nm_bsp_pic24.c</itemPath>
         </logicalFolder>
         <logicalFolder name="bus_wrapper" displayName="bus_wrapper" projectFiles="true">
+          <itemPath>src/bus_wrapper/nm_bus_wrapper_pic24.c</itemPath>
         </logicalFolder>
         <logicalFolder name="common" displayName="common" projectFiles="true">
+          <itemPath>src/common/nm_common.c</itemPath>
         </logicalFolder>
         <logicalFolder name="driver" displayName="driver" projectFiles="true">
+          <itemPath>src/driver/nmi2c.c</itemPath>
+          <itemPath>src/driver/nmspi.c</itemPath>
+          <itemPath>src/driver/nmuart.c</itemPath>
+          <itemPath>src/driver/m2m_ate_mode.c</itemPath>
+          <itemPath>src/driver/m2m_crypto.c</itemPath>
+          <itemPath>src/driver/m2m_hif.c</itemPath>
+          <itemPath>src/driver/nmdrv.c</itemPath>
+          <itemPath>src/driver/m2m_periph.c</itemPath>
+          <itemPath>src/driver/m2m_wifi.c</itemPath>
+          <itemPath>src/driver/nmbus.c</itemPath>
+          <itemPath>src/driver/m2m_ssl.c</itemPath>
+          <itemPath>src/driver/m2m_ota.c</itemPath>
+          <itemPath>src/driver/nmasic.c</itemPath>
         </logicalFolder>
         <logicalFolder name="garrett" displayName="garrett" projectFiles="true">
           <logicalFolder name="dist" displayName="dist" projectFiles="true">
@@ -121,14 +96,17 @@
           <itemPath>stepper.c</itemPath>
         </logicalFolder>
         <logicalFolder name="socket" displayName="socket" projectFiles="true">
+          <itemPath>src/socket/socket.c</itemPath>
         </logicalFolder>
         <logicalFolder name="spi_flash" displayName="spi_flash" projectFiles="true">
+          <itemPath>src/spi_flash/spi_flash.c</itemPath>
         </logicalFolder>
+        <itemPath>src/main.c</itemPath>
+        <itemPath>src/garrettmain.c</itemPath>
+        <itemPath>src/djolib.c</itemPath>
+        <itemPath>src/wifi.c</itemPath>
+        <itemPath>src/alarm.c</itemPath>
       </logicalFolder>
-      <itemPath>src/main.c</itemPath>
-      <itemPath>src/garrettmain.c</itemPath>
-      <itemPath>src/djolib.c</itemPath>
-      <itemPath>src/wifi.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

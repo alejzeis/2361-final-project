@@ -38,7 +38,7 @@
  */
 // 
 
-#include "include/alarm.h"
+#include "alarm.h"
 #include "xc.h"
 
 volatile unsigned int movements;
@@ -51,13 +51,6 @@ void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void )
     // at alarm time, "RING!" for at least 5 minutes.
 }
 
-// configured for every edge, rising and falling
-// @kevinsann
-void __attribute__((interrupt, auto_psv)) _IC5Interrupt ( void )
-{
-    _IC5IF = 0;
-}
-
 // @kevinsann
 void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
 {
@@ -65,7 +58,16 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     t2_overflows++;
     
     if ( t2_overflows % 15 == 0 )
-        positions++;
+        position++;
+    
+    
+}
+
+// configured for every edge, rising and falling
+// @kevinsann
+void __attribute__((interrupt, auto_psv)) _IC5Interrupt ( void )
+{
+    _IC5IF = 0;
 }
 
 // @kevinsann
@@ -79,11 +81,12 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
 
 void init_t2( void )
 {
+    TMR2 = 0;
     T2CON = 0;
     PR2 = 62500;
     
 }
-
+// C:\Users\sann0045\Documents\GitHub\2361-final-project\src\alarm.c
 void init_alarm( void )
 {
     __builtin_write_OSCCONL(OSCCON & 0xbf);

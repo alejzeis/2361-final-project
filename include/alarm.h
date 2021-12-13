@@ -15,7 +15,6 @@
  * track the number of detected movements after alarm onset:
  */ 
 extern volatile unsigned int movements;
-
 extern volatile unsigned int position; 
 
 /* 
@@ -43,5 +42,5 @@ extern "C" {
 #ifdef	__cplusplus
 }
 #endif
-
+// C:\Users\sann0045\Documents\GitHub\2361-final-project\include\alarm.h
 #endif	/* ALARM_H */
