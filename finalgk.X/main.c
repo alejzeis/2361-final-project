@@ -37,7 +37,7 @@
 }*/
 int displayFlag=0;
 int time=0;
-int count=0;;
+int count=0;
 void __attribute__((__interrupt__, __auto_psv__)) _T3Interrupt(void) {
     _T3IF = 0; TMR3 = 0;
     displayFlag=1;
@@ -63,7 +63,7 @@ int main(void)
         //}    
   
   while(1){
-      
+            
       while(count<15){
           delay(10);
           full_drive(6);
