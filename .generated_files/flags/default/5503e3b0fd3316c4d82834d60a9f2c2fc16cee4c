@@ -1,1 +1,5 @@
+<<<<<<< Updated upstream:.generated_files/flags/default/5503e3b0fd3316c4d82834d60a9f2c2fc16cee4c
  -c -mcpu=$(MP_PROCESSOR_OPTION)        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"/home/garrett/Desktop/Fall 2021/2361-final-project/src/driver/m2m_wifi.c
+=======
+ -c -mcpu=$(MP_PROCESSOR_OPTION)        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"C:\Users\sann0045\Documents\GitHub\2361-final-project\src\driver\nmi2c.c
+>>>>>>> Stashed changes:.generated_files/flags/default/89ceda60a33139df8c56de9a5292ff6ed3d681ba

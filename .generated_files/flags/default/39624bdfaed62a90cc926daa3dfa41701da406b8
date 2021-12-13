@@ -1,1 +1,9 @@
+<<<<<<< Updated upstream
  -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"C:\Users\sann0045\Documents\GitHub\2361-final-project\src\hourDisplay.c
+=======
+<<<<<<< Updated upstream:.generated_files/flags/default/fbbd5ee8de6b1d7b0443e8997d433be89af0db28
+ -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"/home/garrett/Desktop/Fall 2021/2361-final-project/src/garrettmain.c
+=======
+ -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"C:\Users\sann0045\Documents\GitHub\2361-final-project\src\hourDisplay.c
+>>>>>>> Stashed changes:.generated_files/flags/default/39624bdfaed62a90cc926daa3dfa41701da406b8
+>>>>>>> Stashed changes

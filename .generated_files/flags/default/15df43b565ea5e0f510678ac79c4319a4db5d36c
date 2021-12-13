@@ -1,1 +1,5 @@
+<<<<<<< Updated upstream:.generated_files/flags/default/15df43b565ea5e0f510678ac79c4319a4db5d36c
  -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"/home/garrett/Desktop/Fall 2021/2361-final-project/src/driver/nmdrv.c
+=======
+ -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"C:\Users\sann0045\Documents\GitHub\2361-final-project\src\garrettmain.c
+>>>>>>> Stashed changes:.generated_files/flags/default/e301f9c3a33b3778d4acae74d762e098b9a465

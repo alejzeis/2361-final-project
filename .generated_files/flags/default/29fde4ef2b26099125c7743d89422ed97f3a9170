@@ -1,1 +1,5 @@
+<<<<<<< Updated upstream:.generated_files/flags/default/29fde4ef2b26099125c7743d89422ed97f3a9170
  -c -mcpu=$(MP_PROCESSOR_OPTION)        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"/home/garrett/Desktop/Fall 2021/2361-final-project/src/main.c
+=======
+ -c -mcpu=$(MP_PROCESSOR_OPTION)        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"C:\Users\sann0045\Documents\GitHub\2361-final-project\src\main.c
+>>>>>>> Stashed changes:.generated_files/flags/default/79b52f587fa24c79197318f503ffa4e8d3e7f5e

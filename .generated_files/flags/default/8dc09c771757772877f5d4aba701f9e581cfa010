@@ -1,1 +1,5 @@
+<<<<<<< Updated upstream:.generated_files/flags/default/8dc09c771757772877f5d4aba701f9e581cfa010
  -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"/home/garrett/Desktop/Fall 2021/2361-final-project/src/main.c
+=======
+ -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"C:\Users\sann0045\Documents\GitHub\2361-final-project\src\main.c
+>>>>>>> Stashed changes:.generated_files/flags/default/8731a88b46c485efb9e7c36643d1b24181db9844
