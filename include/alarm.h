@@ -16,6 +16,8 @@
  */ 
 extern volatile unsigned int movements;
 
+extern volatile unsigned int position; 
+
 /* 
  * t2_overflows
  * overflows track the alarm time.

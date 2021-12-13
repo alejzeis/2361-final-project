@@ -52,36 +52,36 @@ void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void )
 }
 
 // configured for every edge, rising and falling
-// 
-
+// @kevinsann
 void __attribute__((interrupt, auto_psv)) _IC5Interrupt ( void )
 {
     _IC5IF = 0;
 }
 
-
-
+// @kevinsann
 void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
 {
     _T2IF = 0;
     t2_overflows++;
     
-    if (t2_overflows == 60)
-    {
-        
-    }
+    if ( t2_overflows % 15 == 0 )
+        positions++;
 }
 
+// @kevinsann
 void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
 {
     _T3IF = 0;
 }
 
-// Timer Associated. 
+// Timer Associated With the display and alarm.
+// Will overflow every second, 
 
 void init_t2( void )
 {
-    T2CON = 0; 
+    T2CON = 0;
+    PR2 = 62500;
+    
 }
 
 void init_alarm( void )
@@ -125,5 +125,5 @@ void set_alarm( int h, int m )
     // there are 86,400 seconds in a day.
     
     
-    t2_overflows = 
+    // t2_overflows = 
 }
