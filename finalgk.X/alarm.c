@@ -60,7 +60,6 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     if ( t2_overflows % 15 == 0 )
         position++;
     
-    
 }
 
 // configured for every edge, rising and falling
@@ -77,16 +76,21 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
 }
 
 // Timer Associated With the display and alarm.
-// Will overflow every second, 
+// Will overflow every second
+// w
 
 void init_t2( void )
 {
     TMR2 = 0;
     T2CON = 0;
+    T2CONbits.TCKPS = 11;
     PR2 = 62500;
     
+    T2CONbits.TON = 1;
 }
 // C:\Users\sann0045\Documents\GitHub\2361-final-project\src\alarm.c
+
+// ALARM is set up in PWM mode.
 void init_alarm( void )
 {
     __builtin_write_OSCCONL(OSCCON & 0xbf);
@@ -95,6 +99,7 @@ void init_alarm( void )
     
     T3CON = 0; // 
     TMR3 = 0;
+    PR3 = 
     
     // set RP8 as output.
     TRISBbits.TRISB8 = 0;
