@@ -50,11 +50,7 @@ int main(void)
   //ADCON1bits = 0x06; // To turn off analog to digital converters
   TRISB = 0; // PORT B as output port
   PORTB = 0x0F;
-  T2CON = 0;
-  TMR2 = 0;
-  T3CONbits.TCKPS = 0b10;
-  PR3 = 35999;
-  T3CONbits.TON = 1;
+  
      
         //startClock();
         //if(displayFlag==1){
