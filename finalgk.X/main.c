@@ -37,7 +37,7 @@
 }*/
 int displayFlag=0;
 int time=0;
-int count;
+int count=0;;
 void __attribute__((__interrupt__, __auto_psv__)) _T3Interrupt(void) {
     _T3IF = 0; TMR3 = 0;
     displayFlag=1;
@@ -61,7 +61,7 @@ int main(void)
          //setTime(curTime-1);
             
         //}    
-  count
+  
   while(1){
       
       while(count<15){
