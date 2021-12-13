@@ -4,8 +4,13 @@
   <defaultConf>0</defaultConf>
   <confs>
     <conf name="default" type="2">
+<<<<<<< Updated upstream
       <platformToolSN>:=MPLABComm-USB-Microchip:=&lt;vid>04D8:=&lt;pid>8108:=&lt;rev>0002:=&lt;man>Digilent:=&lt;prod>chipKitProgrammer:=&lt;sn>DA93DE2:=&lt;drv>x:=&lt;xpt>h:=end</platformToolSN>
       <languageToolchainDir>/opt/microchip/xc16/v1.70/bin</languageToolchainDir>
+=======
+      <platformToolSN>noToolString</platformToolSN>
+      <languageToolchainDir>C:\Program Files\Microchip\xc16\v1.70\bin</languageToolchainDir>
+>>>>>>> Stashed changes
       <mdbdebugger version="1">
         <placeholder1>place holder 1</placeholder1>
         <placeholder2>place holder 2</placeholder2>
