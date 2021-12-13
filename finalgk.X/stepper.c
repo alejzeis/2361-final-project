@@ -4,7 +4,7 @@
 #include "alarm.h"
 
 // Speed Range 10 to 1  10 = lowest , 1 = highest
-int i=0;
+
 long globalCount=0;
 int norm=16;
 int timeConstant=420;
@@ -32,7 +32,7 @@ void delay(int num){
  * increment position whenever t2_overflows % 15 == 0.
  */
 
-void full_drive( void )
+void full_drive( void)
 {
     switch (position)
     {
@@ -76,18 +76,20 @@ void half_drive(int time)
 
 void reverse(int time)
 {
-    PORTB = 0b00001001;
-    delay(1);
-    PORTB = 0b00001001;
-    delay(1);
-    PORTB = 0b00000110;
-    delay(1);
-    PORTB = 0b00000011;
-    delay(1);
+  
+    PORTB=0b0011000000000000;
+    delay(time);
+    PORTB=0b0110000000000000;
+    delay(time);
+    PORTB=0b1100000000000000;
+    delay(time);
+    PORTB=0b1001000000000000;
+    delay(time);
+    
     
 }
 
-void setZero(void){
+/*void setZero(void){
     write_0();
     i=0;
     for( i=norm; i<16 ;i++){
@@ -98,24 +100,24 @@ void setZero(void){
     write_0();
     half_drive(timeConstant);
         
-}
+}*/
 
 /*int getTimeConstant(int time){
     
 }*/
 
-void setTime(int time){
+/*void setTime(int time){
     setZero();
     i=0;
     for(i=0;i<time;i++) {
-        full_drive(1);
+        full_drive();
         
     }
     
     write_0();
     
     
-}
+}*/
 
 
 

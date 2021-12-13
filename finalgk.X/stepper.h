@@ -11,12 +11,13 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
-    void full_drive(int time);
+    void full_drive(void);
     void half_drive(int time);
     void setTime(int time);
     void setZero(void);    
     void initStepper(void);
     void delay(int num);
+    void reverse(int num);
     
 
 #ifdef	__cplusplus

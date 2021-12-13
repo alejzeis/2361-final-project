@@ -1,15 +1,16 @@
 #include "xc.h"
 #include "lcd.h"
 #include "string.h"
+#include "stepper.h"
 //CON should be between 0 and 0xFF.
 #define CON 0x00
 
 //Obligatory delay function
-void delay(long n){
+/*void delay(long n){
     for (n=n; n>0; n--) {
         asm("nop");
     }
-}
+}*/
 
 void lcd_cmd(char command) {
     I2C2CONbits.SEN = 1;        //Start
