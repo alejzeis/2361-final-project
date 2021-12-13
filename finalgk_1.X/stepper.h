@@ -7,10 +7,10 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
-#define p0 0b00000011
-#define p1 0b00000110
-#define p2 0b00001100
-#define p3 0b00001001
+#define p0 0b0011000000000000
+#define p1 0b0110000000000000
+#define p2 0b1100000000000000
+#define p3 0b1001000000000000
 
 extern unsigned int p0_counts;
 extern unsigned int p1_counts;
@@ -108,6 +108,7 @@ extern "C" {
      */
     
     void time_set ( int h , int m );
+    void inc_one_step(void);
     
     
     /* Kevin Sann , Garrett Welsch

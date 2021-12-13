@@ -57,19 +57,19 @@ void inc_one_step( void )
 {
     PORTB = p0;
     p0_counts++;
-    delay(1);
+    delay(10);
     
     PORTB = p1;
     p1_counts++;
-    delay(1);
+    delay(10);
     
     PORTB = p2;
     p2_counts++;
-    delay(1);
+    delay(10);
     
     PORTB = p3;
     p3_counts++;
-    delay(1);
+    delay(10);
 }
 
 void initStepper( void ){
@@ -101,15 +101,16 @@ void init_t2( void )
 
 
 
+ 
 void set_time(int h, int m)
 {
-    int i; 
+    //int i; 
     int desired_time_in_steps = hm_to_step( h, m );
     
     int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
     
     /*
-     * 1: Enter set time mode--IC1Interrupt
+      1: Enter set time mode--IC1Interrupt
      */
     
     while (steps_to_adjust)
@@ -117,23 +118,24 @@ void set_time(int h, int m)
         
     }
     /*
-     * 2: Set the stepper to desired time with buttons.
+      2: Set the stepper to desired time with buttons.
      */
     
-    else if ( desired_time_in_steps )
+    /*else if ( desired_time_in_steps )
     {
         
     }
-    
+    */
     /*
-     * 3: Turn the stepper to the set time.
+      3: Turn the stepper to the set time.
      */
     
     write_0();
-    t2_overflows = ((h * 60) + m ) * 6; // number of seconds. 
+    t2_overflows = ((h * 60) + m ) * 6;  //number of seconds. 
 }
 
-// @kevinsann
+
+ // @kevinsann
 void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
 {
     _T2IF = 0;
