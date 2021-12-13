@@ -36,15 +36,21 @@ void delay(int num){
     }
 }
 
+// the timer will go to the proper time we need it to.
+
 void fast_forward()
 {
+    int needed_stepper_counts;
     
-    // the timer will go to the proper time we need it to.
+    
+    
     
 }
 
 void fast_reverse(int time)
 {
+    int needed_stepper_counts;
+    
     PORTB = p0;
     p0_counts--;
     delay(1);
@@ -165,18 +171,30 @@ void resume_stepper ( void )
 
 void set_time(int h, int m)
 {
-    setZero();
-    
     int i; 
+    int desired_time_in_steps = hm_to_step( int h, int m );
     
-    for(i=0;i<time;i++) 
+    
+    if ( desired_time_in_steps ) 
     {
         full_drive();    
     }
     
+    else if ( desired_time_in_steps )
+    {
+        
+    }
+    
     write_0();
+    t2_overflows = steps; 
 }
 
+
+
+int hm_to_step( int h, int m )
+{
+    int steps;
+}
 
 
 /*void startClock(void){
