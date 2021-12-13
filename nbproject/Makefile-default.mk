@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/bsp/nm_bsp_pic24.c src/bus_wrapper/nm_bus_wrapper_pic24.c src/common/nm_common.c src/driver/m2m_ate_mode.c src/driver/m2m_crypto.c src/driver/m2m_hif.c src/driver/m2m_ota.c src/driver/m2m_periph.c src/driver/m2m_ssl.c src/driver/m2m_wifi.c src/driver/nmasic.c src/driver/nmbus.c src/driver/nmdrv.c src/driver/nmi2c.c src/driver/nmspi.c src/driver/nmuart.c src/socket/socket.c src/spi_flash/spi_flash.c src/garrett/hourDisplay.c src/garrett/main.c src/garrett/display.c src/garrett/stepper.c src/main.c src/garrettmain.c src/djolib.c src/wifi.c
+SOURCEFILES_QUOTED_IF_SPACED=src/bsp/nm_bsp_pic24.c src/bus_wrapper/nm_bus_wrapper_pic24.c src/common/nm_common.c src/driver/m2m_ate_mode.c src/driver/m2m_crypto.c src/driver/m2m_hif.c src/driver/m2m_ota.c src/driver/m2m_periph.c src/driver/m2m_ssl.c src/driver/m2m_wifi.c src/driver/nmasic.c src/driver/nmbus.c src/driver/nmdrv.c src/driver/nmi2c.c src/driver/nmspi.c src/driver/nmuart.c src/socket/socket.c src/spi_flash/spi_flash.c src/main.c src/garrettmain.c src/djolib.c src/wifi.c src/display.c src/hourDisplay.c stepper.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/bsp/nm_bsp_pic24.o ${OBJECTDIR}/src/bus_wrapper/nm_bus_wrapper_pic24.o ${OBJECTDIR}/src/common/nm_common.o ${OBJECTDIR}/src/driver/m2m_ate_mode.o ${OBJECTDIR}/src/driver/m2m_crypto.o ${OBJECTDIR}/src/driver/m2m_hif.o ${OBJECTDIR}/src/driver/m2m_ota.o ${OBJECTDIR}/src/driver/m2m_periph.o ${OBJECTDIR}/src/driver/m2m_ssl.o ${OBJECTDIR}/src/driver/m2m_wifi.o ${OBJECTDIR}/src/driver/nmasic.o ${OBJECTDIR}/src/driver/nmbus.o ${OBJECTDIR}/src/driver/nmdrv.o ${OBJECTDIR}/src/driver/nmi2c.o ${OBJECTDIR}/src/driver/nmspi.o ${OBJECTDIR}/src/driver/nmuart.o ${OBJECTDIR}/src/socket/socket.o ${OBJECTDIR}/src/spi_flash/spi_flash.o ${OBJECTDIR}/src/garrett/hourDisplay.o ${OBJECTDIR}/src/garrett/main.o ${OBJECTDIR}/src/garrett/display.o ${OBJECTDIR}/src/garrett/stepper.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/garrettmain.o ${OBJECTDIR}/src/djolib.o ${OBJECTDIR}/src/wifi.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/bsp/nm_bsp_pic24.o.d ${OBJECTDIR}/src/bus_wrapper/nm_bus_wrapper_pic24.o.d ${OBJECTDIR}/src/common/nm_common.o.d ${OBJECTDIR}/src/driver/m2m_ate_mode.o.d ${OBJECTDIR}/src/driver/m2m_crypto.o.d ${OBJECTDIR}/src/driver/m2m_hif.o.d ${OBJECTDIR}/src/driver/m2m_ota.o.d ${OBJECTDIR}/src/driver/m2m_periph.o.d ${OBJECTDIR}/src/driver/m2m_ssl.o.d ${OBJECTDIR}/src/driver/m2m_wifi.o.d ${OBJECTDIR}/src/driver/nmasic.o.d ${OBJECTDIR}/src/driver/nmbus.o.d ${OBJECTDIR}/src/driver/nmdrv.o.d ${OBJECTDIR}/src/driver/nmi2c.o.d ${OBJECTDIR}/src/driver/nmspi.o.d ${OBJECTDIR}/src/driver/nmuart.o.d ${OBJECTDIR}/src/socket/socket.o.d ${OBJECTDIR}/src/spi_flash/spi_flash.o.d ${OBJECTDIR}/src/garrett/hourDisplay.o.d ${OBJECTDIR}/src/garrett/main.o.d ${OBJECTDIR}/src/garrett/display.o.d ${OBJECTDIR}/src/garrett/stepper.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/garrettmain.o.d ${OBJECTDIR}/src/djolib.o.d ${OBJECTDIR}/src/wifi.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/bsp/nm_bsp_pic24.o ${OBJECTDIR}/src/bus_wrapper/nm_bus_wrapper_pic24.o ${OBJECTDIR}/src/common/nm_common.o ${OBJECTDIR}/src/driver/m2m_ate_mode.o ${OBJECTDIR}/src/driver/m2m_crypto.o ${OBJECTDIR}/src/driver/m2m_hif.o ${OBJECTDIR}/src/driver/m2m_ota.o ${OBJECTDIR}/src/driver/m2m_periph.o ${OBJECTDIR}/src/driver/m2m_ssl.o ${OBJECTDIR}/src/driver/m2m_wifi.o ${OBJECTDIR}/src/driver/nmasic.o ${OBJECTDIR}/src/driver/nmbus.o ${OBJECTDIR}/src/driver/nmdrv.o ${OBJECTDIR}/src/driver/nmi2c.o ${OBJECTDIR}/src/driver/nmspi.o ${OBJECTDIR}/src/driver/nmuart.o ${OBJECTDIR}/src/socket/socket.o ${OBJECTDIR}/src/spi_flash/spi_flash.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/garrettmain.o ${OBJECTDIR}/src/djolib.o ${OBJECTDIR}/src/wifi.o ${OBJECTDIR}/src/display.o ${OBJECTDIR}/src/hourDisplay.o ${OBJECTDIR}/stepper.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/bsp/nm_bsp_pic24.o.d ${OBJECTDIR}/src/bus_wrapper/nm_bus_wrapper_pic24.o.d ${OBJECTDIR}/src/common/nm_common.o.d ${OBJECTDIR}/src/driver/m2m_ate_mode.o.d ${OBJECTDIR}/src/driver/m2m_crypto.o.d ${OBJECTDIR}/src/driver/m2m_hif.o.d ${OBJECTDIR}/src/driver/m2m_ota.o.d ${OBJECTDIR}/src/driver/m2m_periph.o.d ${OBJECTDIR}/src/driver/m2m_ssl.o.d ${OBJECTDIR}/src/driver/m2m_wifi.o.d ${OBJECTDIR}/src/driver/nmasic.o.d ${OBJECTDIR}/src/driver/nmbus.o.d ${OBJECTDIR}/src/driver/nmdrv.o.d ${OBJECTDIR}/src/driver/nmi2c.o.d ${OBJECTDIR}/src/driver/nmspi.o.d ${OBJECTDIR}/src/driver/nmuart.o.d ${OBJECTDIR}/src/socket/socket.o.d ${OBJECTDIR}/src/spi_flash/spi_flash.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/garrettmain.o.d ${OBJECTDIR}/src/djolib.o.d ${OBJECTDIR}/src/wifi.o.d ${OBJECTDIR}/src/display.o.d ${OBJECTDIR}/src/hourDisplay.o.d ${OBJECTDIR}/stepper.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/bsp/nm_bsp_pic24.o ${OBJECTDIR}/src/bus_wrapper/nm_bus_wrapper_pic24.o ${OBJECTDIR}/src/common/nm_common.o ${OBJECTDIR}/src/driver/m2m_ate_mode.o ${OBJECTDIR}/src/driver/m2m_crypto.o ${OBJECTDIR}/src/driver/m2m_hif.o ${OBJECTDIR}/src/driver/m2m_ota.o ${OBJECTDIR}/src/driver/m2m_periph.o ${OBJECTDIR}/src/driver/m2m_ssl.o ${OBJECTDIR}/src/driver/m2m_wifi.o ${OBJECTDIR}/src/driver/nmasic.o ${OBJECTDIR}/src/driver/nmbus.o ${OBJECTDIR}/src/driver/nmdrv.o ${OBJECTDIR}/src/driver/nmi2c.o ${OBJECTDIR}/src/driver/nmspi.o ${OBJECTDIR}/src/driver/nmuart.o ${OBJECTDIR}/src/socket/socket.o ${OBJECTDIR}/src/spi_flash/spi_flash.o ${OBJECTDIR}/src/garrett/hourDisplay.o ${OBJECTDIR}/src/garrett/main.o ${OBJECTDIR}/src/garrett/display.o ${OBJECTDIR}/src/garrett/stepper.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/garrettmain.o ${OBJECTDIR}/src/djolib.o ${OBJECTDIR}/src/wifi.o
+OBJECTFILES=${OBJECTDIR}/src/bsp/nm_bsp_pic24.o ${OBJECTDIR}/src/bus_wrapper/nm_bus_wrapper_pic24.o ${OBJECTDIR}/src/common/nm_common.o ${OBJECTDIR}/src/driver/m2m_ate_mode.o ${OBJECTDIR}/src/driver/m2m_crypto.o ${OBJECTDIR}/src/driver/m2m_hif.o ${OBJECTDIR}/src/driver/m2m_ota.o ${OBJECTDIR}/src/driver/m2m_periph.o ${OBJECTDIR}/src/driver/m2m_ssl.o ${OBJECTDIR}/src/driver/m2m_wifi.o ${OBJECTDIR}/src/driver/nmasic.o ${OBJECTDIR}/src/driver/nmbus.o ${OBJECTDIR}/src/driver/nmdrv.o ${OBJECTDIR}/src/driver/nmi2c.o ${OBJECTDIR}/src/driver/nmspi.o ${OBJECTDIR}/src/driver/nmuart.o ${OBJECTDIR}/src/socket/socket.o ${OBJECTDIR}/src/spi_flash/spi_flash.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/garrettmain.o ${OBJECTDIR}/src/djolib.o ${OBJECTDIR}/src/wifi.o ${OBJECTDIR}/src/display.o ${OBJECTDIR}/src/hourDisplay.o ${OBJECTDIR}/stepper.o
 
 # Source Files
-SOURCEFILES=src/bsp/nm_bsp_pic24.c src/bus_wrapper/nm_bus_wrapper_pic24.c src/common/nm_common.c src/driver/m2m_ate_mode.c src/driver/m2m_crypto.c src/driver/m2m_hif.c src/driver/m2m_ota.c src/driver/m2m_periph.c src/driver/m2m_ssl.c src/driver/m2m_wifi.c src/driver/nmasic.c src/driver/nmbus.c src/driver/nmdrv.c src/driver/nmi2c.c src/driver/nmspi.c src/driver/nmuart.c src/socket/socket.c src/spi_flash/spi_flash.c src/garrett/hourDisplay.c src/garrett/main.c src/garrett/display.c src/garrett/stepper.c src/main.c src/garrettmain.c src/djolib.c src/wifi.c
+SOURCEFILES=src/bsp/nm_bsp_pic24.c src/bus_wrapper/nm_bus_wrapper_pic24.c src/common/nm_common.c src/driver/m2m_ate_mode.c src/driver/m2m_crypto.c src/driver/m2m_hif.c src/driver/m2m_ota.c src/driver/m2m_periph.c src/driver/m2m_ssl.c src/driver/m2m_wifi.c src/driver/nmasic.c src/driver/nmbus.c src/driver/nmdrv.c src/driver/nmi2c.c src/driver/nmspi.c src/driver/nmuart.c src/socket/socket.c src/spi_flash/spi_flash.c src/main.c src/garrettmain.c src/djolib.c src/wifi.c src/display.c src/hourDisplay.c stepper.c
 
 
 
@@ -203,30 +203,6 @@ ${OBJECTDIR}/src/spi_flash/spi_flash.o: src/spi_flash/spi_flash.c  .generated_fi
 	@${RM} ${OBJECTDIR}/src/spi_flash/spi_flash.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/spi_flash/spi_flash.c  -o ${OBJECTDIR}/src/spi_flash/spi_flash.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/spi_flash/spi_flash.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/src/garrett/hourDisplay.o: src/garrett/hourDisplay.c  .generated_files/flags/default/4bf710437eb424cccc1b6a2b9ece45c9cd3b2c17 .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
-	@${MKDIR} "${OBJECTDIR}/src/garrett" 
-	@${RM} ${OBJECTDIR}/src/garrett/hourDisplay.o.d 
-	@${RM} ${OBJECTDIR}/src/garrett/hourDisplay.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/garrett/hourDisplay.c  -o ${OBJECTDIR}/src/garrett/hourDisplay.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/garrett/hourDisplay.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
-${OBJECTDIR}/src/garrett/main.o: src/garrett/main.c  .generated_files/flags/default/f0cc235a56c1426c12f39f76317313cd62a7eec0 .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
-	@${MKDIR} "${OBJECTDIR}/src/garrett" 
-	@${RM} ${OBJECTDIR}/src/garrett/main.o.d 
-	@${RM} ${OBJECTDIR}/src/garrett/main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/garrett/main.c  -o ${OBJECTDIR}/src/garrett/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/garrett/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
-${OBJECTDIR}/src/garrett/display.o: src/garrett/display.c  .generated_files/flags/default/8650b417f81a9756f0d90b789c8ed265902fc561 .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
-	@${MKDIR} "${OBJECTDIR}/src/garrett" 
-	@${RM} ${OBJECTDIR}/src/garrett/display.o.d 
-	@${RM} ${OBJECTDIR}/src/garrett/display.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/garrett/display.c  -o ${OBJECTDIR}/src/garrett/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/garrett/display.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
-${OBJECTDIR}/src/garrett/stepper.o: src/garrett/stepper.c  .generated_files/flags/default/1b3d7848803aed9900ecc679913e68c5edcb6b76 .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
-	@${MKDIR} "${OBJECTDIR}/src/garrett" 
-	@${RM} ${OBJECTDIR}/src/garrett/stepper.o.d 
-	@${RM} ${OBJECTDIR}/src/garrett/stepper.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/garrett/stepper.c  -o ${OBJECTDIR}/src/garrett/stepper.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/garrett/stepper.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/e19c13bcc0c061279cd652972100c7e1525870e5 .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/main.o.d 
@@ -250,6 +226,24 @@ ${OBJECTDIR}/src/wifi.o: src/wifi.c  .generated_files/flags/default/a338a7e741d8
 	@${RM} ${OBJECTDIR}/src/wifi.o.d 
 	@${RM} ${OBJECTDIR}/src/wifi.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/wifi.c  -o ${OBJECTDIR}/src/wifi.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/wifi.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/src/display.o: src/display.c  .generated_files/flags/default/7e17e499b3097d523ef15cc670131460b51fc63c .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/display.o.d 
+	@${RM} ${OBJECTDIR}/src/display.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/display.c  -o ${OBJECTDIR}/src/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/display.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/src/hourDisplay.o: src/hourDisplay.c  .generated_files/flags/default/5eabd68a6262563cd151543fa160f038e73f295e .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/hourDisplay.o.d 
+	@${RM} ${OBJECTDIR}/src/hourDisplay.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/hourDisplay.c  -o ${OBJECTDIR}/src/hourDisplay.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/hourDisplay.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/stepper.o: stepper.c  .generated_files/flags/default/2f35b72586bb46c9083c48d195e2bd1969ff4272 .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/stepper.o.d 
+	@${RM} ${OBJECTDIR}/stepper.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  stepper.c  -o ${OBJECTDIR}/stepper.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/stepper.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
 ${OBJECTDIR}/src/bsp/nm_bsp_pic24.o: src/bsp/nm_bsp_pic24.c  .generated_files/flags/default/fd26e94db8dad4e6cfdb63c445cdb0ca1ed1b56f .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
@@ -360,30 +354,6 @@ ${OBJECTDIR}/src/spi_flash/spi_flash.o: src/spi_flash/spi_flash.c  .generated_fi
 	@${RM} ${OBJECTDIR}/src/spi_flash/spi_flash.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/spi_flash/spi_flash.c  -o ${OBJECTDIR}/src/spi_flash/spi_flash.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/spi_flash/spi_flash.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/src/garrett/hourDisplay.o: src/garrett/hourDisplay.c  .generated_files/flags/default/d084f6a4f30a0f1b836764f5e135f713139fdecd .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
-	@${MKDIR} "${OBJECTDIR}/src/garrett" 
-	@${RM} ${OBJECTDIR}/src/garrett/hourDisplay.o.d 
-	@${RM} ${OBJECTDIR}/src/garrett/hourDisplay.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/garrett/hourDisplay.c  -o ${OBJECTDIR}/src/garrett/hourDisplay.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/garrett/hourDisplay.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
-${OBJECTDIR}/src/garrett/main.o: src/garrett/main.c  .generated_files/flags/default/c4f2f25281d0d73c5d8eee344ccf6e02f2a764f0 .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
-	@${MKDIR} "${OBJECTDIR}/src/garrett" 
-	@${RM} ${OBJECTDIR}/src/garrett/main.o.d 
-	@${RM} ${OBJECTDIR}/src/garrett/main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/garrett/main.c  -o ${OBJECTDIR}/src/garrett/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/garrett/main.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
-${OBJECTDIR}/src/garrett/display.o: src/garrett/display.c  .generated_files/flags/default/e2a1ff5d161cdf88537dbe7503574c51e722572a .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
-	@${MKDIR} "${OBJECTDIR}/src/garrett" 
-	@${RM} ${OBJECTDIR}/src/garrett/display.o.d 
-	@${RM} ${OBJECTDIR}/src/garrett/display.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/garrett/display.c  -o ${OBJECTDIR}/src/garrett/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/garrett/display.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
-${OBJECTDIR}/src/garrett/stepper.o: src/garrett/stepper.c  .generated_files/flags/default/bbd766d8bf9ab6841b42e3652e168fc5f1ab11ee .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
-	@${MKDIR} "${OBJECTDIR}/src/garrett" 
-	@${RM} ${OBJECTDIR}/src/garrett/stepper.o.d 
-	@${RM} ${OBJECTDIR}/src/garrett/stepper.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/garrett/stepper.c  -o ${OBJECTDIR}/src/garrett/stepper.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/garrett/stepper.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/450ee7e0836847611804141e6c3927bdf17f99cb .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/main.o.d 
@@ -407,6 +377,24 @@ ${OBJECTDIR}/src/wifi.o: src/wifi.c  .generated_files/flags/default/8de6449f861e
 	@${RM} ${OBJECTDIR}/src/wifi.o.d 
 	@${RM} ${OBJECTDIR}/src/wifi.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/wifi.c  -o ${OBJECTDIR}/src/wifi.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/wifi.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/src/display.o: src/display.c  .generated_files/flags/default/dd7c5de8c9ab75989b28b54294777364852b416b .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/display.o.d 
+	@${RM} ${OBJECTDIR}/src/display.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/display.c  -o ${OBJECTDIR}/src/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/display.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/src/hourDisplay.o: src/hourDisplay.c  .generated_files/flags/default/10afce9725c31977d57c26ff30bde8371fdd75d2 .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/hourDisplay.o.d 
+	@${RM} ${OBJECTDIR}/src/hourDisplay.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/hourDisplay.c  -o ${OBJECTDIR}/src/hourDisplay.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/hourDisplay.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/stepper.o: stepper.c  .generated_files/flags/default/faf7935c09a9a773ac5ce6396e0bd08285978d2b .generated_files/flags/default/51d68fbe3c3b78ef3edaaa9505a01551f0e49494
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/stepper.o.d 
+	@${RM} ${OBJECTDIR}/stepper.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  stepper.c  -o ${OBJECTDIR}/stepper.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/stepper.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

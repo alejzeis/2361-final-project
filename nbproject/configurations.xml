@@ -116,10 +116,9 @@
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <itemPath>src/garrett/hourDisplay.c</itemPath>
-          <itemPath>src/garrett/main.c</itemPath>
-          <itemPath>src/garrett/display.c</itemPath>
-          <itemPath>src/garrett/stepper.c</itemPath>
+          <itemPath>src/display.c</itemPath>
+          <itemPath>src/hourDisplay.c</itemPath>
+          <itemPath>stepper.c</itemPath>
         </logicalFolder>
         <logicalFolder name="socket" displayName="socket" projectFiles="true">
         </logicalFolder>
