@@ -9,6 +9,8 @@
 #include "xc.h"
 #include "stepper.h"
 #include "wait_head.h"
+#include "stdint.h"
+#include <stdio.h>
 
 
 
@@ -35,6 +37,7 @@
 }*/
 int displayFlag=0;
 int time=0;
+int count;
 void __attribute__((__interrupt__, __auto_psv__)) _T3Interrupt(void) {
     _T3IF = 0; TMR3 = 0;
     displayFlag=1;
@@ -58,33 +61,22 @@ int main(void)
          //setTime(curTime-1);
             
         //}    
-  
+  count
   while(1){
-      int i=0;
-
-         
       
-      
-      
-   
-      
-      while(i<60){
-        full_drive(400);
-    
-          
+      while(count<15){
+          delay(10);
+          full_drive(6);
+          delay(10);
+          PORTB = 0b00000000;
+          delay(100000);
+          count++;
       }
-    PORTB = 0b00000000;
-    delay(100000);  
+      PORTB = 0b00000000;
+      delay(100000);  
       
      
-  } 
-        
-  
-  
-  
-  
-   //dont clear tmr3 as stepper will never go low to turn off
-  
+  }   
   
 }
 
