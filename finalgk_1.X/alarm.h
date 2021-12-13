@@ -28,7 +28,6 @@ extern "C" {
 #endif
     void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void );
     void __attribute__((interrupt, auto_psv)) _IC5Interrupt ( void );
-    void __attribute__((interrupt, auto_psv)) _T2Interrupt( void );
     void __attribute__((interrupt, auto_psv)) _T3Interrupt( void );
     
     
@@ -37,7 +36,6 @@ extern "C" {
      * 
      */
     
-    void init_t2 ( void );
     void init_alarm( void );
     void init_PIR( void );
     void set_alarm( int h , int m );

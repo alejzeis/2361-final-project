@@ -39,6 +39,7 @@
 // 
 
 #include "alarm.h"
+#include "stepper.h"
 #include "xc.h"
 
 volatile unsigned int movements;
@@ -49,16 +50,6 @@ void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void )
     _OC5IF = 0;
     
     // at alarm time, "RING!" for at least 5 minutes.
-}
-
-// @kevinsann
-void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
-{
-    _T2IF = 0;
-    t2_overflows++;
-    
-    if ( t2_overflows % 15 == 0 )
-        position++;
 }
 
 // configured for every edge, rising and falling
@@ -74,19 +65,7 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
     _T3IF = 0;
 }
 
-// Timer Associated With the display and alarm.
-// Will overflow every second
-// w
 
-void init_t2( void )
-{
-    TMR2 = 0;
-    T2CON = 0;
-    T2CONbits.TCKPS = 11;
-    PR2 = 62500;
-    
-    T2CONbits.TON = 1;
-}
 // C:\Users\sann0045\Documents\GitHub\2361-final-project\src\alarm.c
 
 // ALARM is set up in PWM mode.

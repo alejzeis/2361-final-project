@@ -53,10 +53,12 @@ int numpad(char Char){
             return 0b0000001111111100;
     }
 }
+/*
 void showChar7seg(char myChar, enum DIGIT myDigit) {
     
     LATB &= CLEAR_DIGS_AND_SEGS_BIT_MASK;
     LATB = myDigit | numpad(myChar);
            
 }
+ */
 
