@@ -81,10 +81,13 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
 
 void init_t2( void )
 {
+    t2_overflows = 0;
     TMR2 = 0;
     T2CON = 0;
     T2CONbits.TCKPS = 11;
     PR2 = 62500;
+    
+    // INTERRUPT PRIORITY, FLAG, ENABLE
     
     T2CONbits.TON = 1;
 }
@@ -99,7 +102,7 @@ void init_alarm( void )
     
     T3CON = 0; // 
     TMR3 = 0;
-    PR3 = 
+    //PR3 = 
     
     // set RP8 as output.
     TRISBbits.TRISB8 = 0;
