@@ -59,7 +59,6 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     
     if ( t2_overflows % 15 == 0 )
         position++;
-    
 }
 
 // configured for every edge, rising and falling

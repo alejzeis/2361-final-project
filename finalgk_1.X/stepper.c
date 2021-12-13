@@ -86,7 +86,7 @@ void reverse(int time)
     delay(1);
     
 }
-
+/*
 void setZero(void){
     write_0();
     i=0;
@@ -99,6 +99,7 @@ void setZero(void){
     half_drive(timeConstant);
         
 }
+*/
 
 /*int getTimeConstant(int time){
     
