@@ -11,6 +11,7 @@
 #include "wait_head.h"
 #include "stdint.h"
 #include <stdio.h>
+#include "lcd.h"
 
 
 
@@ -45,6 +46,14 @@ void __attribute__((__interrupt__, __auto_psv__)) _T3Interrupt(void) {
 
 int main(void)
 {
+   CLKDIVbits.RCDIV = 0;
+   AD1PCFG = 0x9fff; //all digital inputs and outputs
+   I2C2BRG = 0x9D;
+    I2C2CONbits.I2CEN = 1;
+    _I2CSIDL = 0;
+    IFS3bits.MI2C2IF=0;
+    lcd_init();     
+    
   
   CMCON = 0x07; // To turn off comparators
   //ADCON1bits = 0x06; // To turn off analog to digital converters
@@ -65,6 +74,14 @@ int main(void)
   while(1){
             
       while(count<15){
+          for(i=0;i<13;i=i+1){
+            tempTime=hours[i];
+        
+            delay(300000);
+            lcd_setCursor(1,0);
+            lcd_printChar(tempTime);
+            
+          }  
           delay(10);
           full_drive(6);
           delay(10);
