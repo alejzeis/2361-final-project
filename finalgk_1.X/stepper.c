@@ -94,6 +94,7 @@ void full_drive( void )
             PORTB = p3; // position 3: 60 seconds.
             break;
     }
+    delay (1);
     
     position %= 4;
 }
