@@ -109,14 +109,13 @@ void set_time(int h, int m)
     int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
     
     /*
-     * 1: Enter set time mode--
+     * 1: Enter set time mode--IC1Interrupt
      */
     
-    if ( desired_time_in_steps ) 
+    while (steps_to_adjust)
     {
-        full_drive();    
+        
     }
-    
     /*
      * 2: Set the stepper to desired time with buttons.
      */
@@ -147,15 +146,19 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     {
         case 0:
             PORTB = p0;// position 0: 15 seconds.
+            p0_counts++;
             break;
         case 1:
             PORTB = p1; // position 1: 30 seconds.
+            p1_counts++;
             break;
         case 2:
             PORTB = p2; // position 2: 45 seconds.
+            p2_counts++;
             break;
         case 3:
             PORTB = p3; // position 3: 60 seconds.
+            p3_counts++;
             break;
     }
     
