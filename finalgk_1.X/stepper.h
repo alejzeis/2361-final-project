@@ -7,10 +7,16 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
-#define p0 0b00001001
-#define p1 0b00001100
-#define p2 0b00000110
-#define p3 0b00000011
+#define p0 0b00000011
+#define p1 0b00000110
+#define p2 0b00001100
+#define p3 0b00001001
+
+extern unsigned int p0_counts;
+extern unsigned int p1_counts;
+extern unsigned int p2_counts;
+extern unsigned int p3_counts;
+
 
 #ifdef	__cplusplus
 extern "C" {
@@ -45,6 +51,17 @@ extern "C" {
     void half_drive( void );
     
     /*
+     *void hm_to_step( int h , int m );
+     */
+    int hm_to_step( int h , int m );
+    
+    
+    /*
+     * void __attribute__((interrupt, auto_psv)) _IC1Interrupt ( void )
+     */
+    void __attribute__((interrupt, auto_psv)) _IC1Interrupt ( void );
+    
+    /*
      * void init_t2( void );
      * 
      * initializes the timer associated with the display and alarm.
@@ -66,31 +83,9 @@ extern "C" {
      */
     void initStepper(void);
     
-    /*
-     * void pause_stepper( void );
-     * 
-     * After call,
-     * the steps the motor would have gone 
-     * through to get to the current time-- current time will always be 
-     * tracked by t2_overflows.
-     */
-    void pause_stepper ( void );
     
     /*
-     * void resume_stepper( void );
-     * 
-     * After call,
-     * the motor resumes operation--will spin hand by calculating the difference
-     * between the current motor position and where the stepper should be,
-     * if operation remained uninterrupted.
-     * 
-     * 
-     * 
-     */
-    void resume_stepper ( void );
-    
-    /*
-     * void set_time(int h, int m);
+     * void time_set (int h, int m);
      * 
      * Will change t2_overflows, will change p*_count.
      * 
@@ -108,19 +103,11 @@ extern "C" {
      * to stay up to speed with user input. This means there will be only
      * a small delay between stepper pulses.
      * 
-     * 
+     * Will exit by resuming alarm clock operation at the new time. 
      * 
      */
     
-    void set_time(int h, int m);
-   
-    /*
-     * void setZero( void );
-     * 
-     * have to initialize position to 
-     * 
-     */
-    void setZero(void);
+    void time_set ( int h , int m );
     
     
     /* Kevin Sann , Garrett Welsch
@@ -129,7 +116,7 @@ extern "C" {
     * t2_interrupt will test when to transition between states.
     * increment position whenever t2_overflows % 15 == 0.
     */
-    void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
+    void __attribute__((interrupt, auto_psv)) _T2Interrupt( void );
     
     
     

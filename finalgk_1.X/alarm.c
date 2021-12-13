@@ -43,7 +43,12 @@
 #include "xc.h"
 
 volatile unsigned int movements;
-volatile unsigned long int t2_overflows;
+
+/* PIR functions:
+ * _OC5Interrupt,
+ * _IC5Interrupt,
+ * _
+ */
 
 void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void )
 {
@@ -107,9 +112,10 @@ void init_PIR( void )
 
 void set_alarm( int h, int m )
 {
+    int desired_time_in_steps = hm_to_step(  h, m );
+    
+    int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
+    
     // calculate the needed IC1 timer value based on h and m.
     // there are 86,400 seconds in a day.
-    
-    
-    // t2_overflows = 
 }

@@ -38,6 +38,7 @@
 int displayFlag=0;
 int time=0;
 int count=0;
+
 void __attribute__((__interrupt__, __auto_psv__)) _T3Interrupt(void) {
     _T3IF = 0; TMR3 = 0;
     displayFlag=1;
@@ -58,11 +59,6 @@ int main(void)
   //ADCON1bits = 0x06; // To turn off analog to digital converters
   TRISB = 0; // PORT B as output port
   PORTB = 0x0F;
-  T2CON = 0;
-  TMR2 = 0;
-  T3CONbits.TCKPS = 0b10;
-  PR3 = 35999;
-  T3CONbits.TON = 1;
      
         //startClock();
         //if(displayFlag==1){
@@ -70,8 +66,21 @@ int main(void)
             
         //}    
   
-  while(1){
+    while(1)
+    {
+        if (_IC1IF)
+        {
             
+        }
+        
+        // change the hour display whenever the stepper has counted 
+        // for one hour.
+        
+        if ( displayFlag )
+        {
+            
+        }
+        /*
       while(count<15){
           for(i=0;i<13;i=i+1){
             tempTime=hours[i];
@@ -90,8 +99,8 @@ int main(void)
       }
       PORTB = 0b00000000;
       delay(100000);  
-      
+      */
      
-  }   
+    }   
   
 }
