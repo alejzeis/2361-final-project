@@ -15,6 +15,10 @@ volatile unsigned int minutes;
 volatile unsigned int hours;
 volatile unsigned long int t2_overflows;
 
+
+/*
+ * p*_counts synchronize the stepper so we know what specific position it is at.
+ */
 unsigned int p0_counts;
 unsigned int p1_counts;
 unsigned int p2_counts;
@@ -53,11 +57,11 @@ void dec_one_step( void )
     delay(1);
 }
 
-int hm_to_step( int h, int m )
+int m_to_step( int m )
 {
     int steps;
     
-    steps = ( h * 60 + m ) * 4;
+    steps = m * 4;
     return steps;
 }
 
@@ -116,23 +120,36 @@ void round_step( void )
         // round the stepper down, if it is at the first two positions 
         case 0:
             p0_counts--;
+            LATB = p3;
+            delay(10);
+            
             break;
         case 1:
             p0_counts--; // position 1: 30 seconds.
             p1_counts--;
+            
+            PORTB = p0;
+            delay(10);
+            PORTB = p3;
+            delay(10);
+            
             break;
         
         // round the stepper up, if it is at the last two positions.
         case 2:
-            PORTB = p2; // position 2: 45 seconds.
+            // position 2: 45 seconds. 
             p2_counts++;
+            p3_counts++;
+            
+            PORTB = p3;
+            delay(10);
+            
             break;
         case 3:
-            PORTB = p3; // position 3: 60 seconds.
-            p3_counts++;
             break;
     }
-        
+    
+    position = 3;
 }
 
 void set_time(int h, int m)
@@ -143,10 +160,15 @@ void set_time(int h, int m)
     
     int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
     
-    while (steps_to_adjust)
+    round_step(); 
+    
+    while ( steps_to_adjust )
     {
         
+        steps_to_adjust--;
     }
+    
+    while ( steps_to_adjust < )
     /*
       2: Set the stepper to desired time with buttons.
      */
@@ -160,8 +182,7 @@ void set_time(int h, int m)
       3: Turn the stepper to the set time.
      */
     
-    write_0();
-    t2_overflows = ((h * 60) + m ) * 6;  //number of seconds. 
+    t2_overflows = ((h * 60) + m ) * 60;  //number of seconds. 
 }
 
 
