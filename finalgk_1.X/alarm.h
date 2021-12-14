@@ -35,6 +35,7 @@ extern "C" {
     
     void init_alarm( void );
     void init_PIR( void );
+    
     void set_alarm( int h , int m );
 
 #ifdef	__cplusplus
