@@ -23,6 +23,7 @@ extern "C" {
     
     /*
      */
+    unsigned int getHour(void);
     int get_counts( void );
     
     /*

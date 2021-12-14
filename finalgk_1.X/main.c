@@ -74,7 +74,7 @@ int main(void)
     while(1)
     {
         j=getHour();
-        displayFlag=1;
+        
         
         if (_T2IF==1)
         {

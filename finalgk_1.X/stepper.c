@@ -205,7 +205,6 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     if ( t2_overflows % 15 == 0 )
         position++;
     if ( t2_overflows % 60 == 0 ){
-        hours++;
         if ( t2_overflows % 3600 != 0 ){
             minutes++;
         }    

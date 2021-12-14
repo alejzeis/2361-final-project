@@ -120,7 +120,7 @@ void init_PIR( void )
  * set the alarm according to a spontaneous input from alejandro's library.
  */
 
-void set_alarm( int m )
+/*void set_alarm( int m )
 {
     int desired_time_in_steps = m_to_step( m );
     int steps_to_adjust;
