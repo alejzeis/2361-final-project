@@ -35,10 +35,11 @@
     putVal(ADC1BUF0);
     
 }*/
-char hours[24] = {'0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24'};
+char hours[25] = {'0','1','2','3','4','5','6','7','8','9','0','1','2','3','4','5','6','7','8','9','0','1','2','3','4'};
 char tempTime;
-int displayFlag=0;
-int time=0;
+//int displayFlag=0;
+//int time=0;
+int j;
 //int i;
 //int count=0;
 
@@ -52,10 +53,12 @@ int main(void)
    CLKDIVbits.RCDIV = 0;
    AD1PCFG = 0x9fff; //all digital inputs and outputs
    I2C2BRG = 0x9D;
-    I2C2CONbits.I2CEN = 1;
-    _I2CSIDL = 0;
+   I2C2CONbits.I2CEN = 1;
+   _I2CSIDL = 0;
     IFS3bits.MI2C2IF=0;
-    //lcd_init();     
+    lcd_init();  
+    init_t2();
+    
     
   
   CMCON = 0x07; // To turn off comparators
@@ -71,6 +74,7 @@ int main(void)
   
     while(1)
     {
+        
         if (_IC1IF)
         {
             
@@ -83,26 +87,43 @@ int main(void)
         {
             
         }
-        inc_one_step();
+        
+        //reg_inc_one_step();
         
       
-        /*for(i=0;i<25;i=i+1){
-            tempTime=hours[i];
-        
-            delay(300000);
+        for(j=0;j<25;j++){
+            if(j<11){
+                lcd_setCursor(0,0);
+                lcd_printChar('0');
+            }
+            
+            else if(j<21&&j>=10){
+                lcd_setCursor(0,0);
+                lcd_printChar('1');
+                
+            }
+            
+            else{
+                lcd_setCursor(0,0);
+                lcd_printChar('2');
+            }
+            
+            tempTime=hours[j];
+            lcd_setCursor(1,0);
+            delaylcd(3000000);
             lcd_setCursor(1,0);
             lcd_printChar(tempTime);
             
-          } */ 
+        }
+        j=0;
           /*delay(10);
           full_drive(6);
           delay(10);
           PORTB = 0b00000000;
           delay(100000);
           count++;*/
-        PORTB=0;  
-        delay(60000);
-      }
+       
+    }
      
       
      
