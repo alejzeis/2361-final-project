@@ -13,6 +13,9 @@ int timeConstant=420;
 volatile unsigned int position;
 volatile unsigned long int t2_overflows;
 
+volatile unsigned int minutes;
+volatile unsigned int hours;
+
 unsigned int p0_counts;
 unsigned int p1_counts;
 unsigned int p2_counts;
@@ -55,6 +58,7 @@ int hm_to_step( int h, int m )
 
 void inc_one_step( void )
 {
+    
     PORTB = p0;
     p0_counts++;
     delay(1);
@@ -98,9 +102,6 @@ void init_t2( void )
     T2CONbits.TON = 1;
 }
 
-
-
-
 void set_time(int h, int m)
 {
     int i; 
@@ -117,20 +118,17 @@ void set_time(int h, int m)
         
     }
     /*
-     * 2: Set the stepper to desired time with buttons.
+     * 2: Set the stepper to desired time with turn pot.
      */
     
-    else if ( desired_time_in_steps )
-    {
-        
-    }
+   
     
     /*
      * 3: Turn the stepper to the set time.
      */
     
     write_0();
-    t2_overflows = ((h * 60) + m ) * 6; // number of seconds. 
+    t2_overflows = desired_time_in_steps * 15; // number of seconds. 
 }
 
 // @kevinsann
@@ -146,6 +144,7 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     {
         case 0:
             PORTB = p0;// position 0: 15 seconds.
+            LATB = 0;
             p0_counts++;
             break;
         case 1:

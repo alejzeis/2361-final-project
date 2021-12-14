@@ -7,6 +7,7 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
+
 #define p0 0b00000011
 #define p1 0b00000110
 #define p2 0b00001100
@@ -16,11 +17,21 @@ extern unsigned int p0_counts;
 extern unsigned int p1_counts;
 extern unsigned int p2_counts;
 extern unsigned int p3_counts;
-
+/*
+ * when we abruptly
+ */
 
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
+    
+    /*
+     * void dec_one_step( void );
+     * 
+     * used to decrement the stepper by one step.
+     */
+    
+    void dec_one_step( void );
     
     /*
      * void delay(int num)
@@ -44,14 +55,11 @@ extern "C" {
     
     void full_drive( void );
     
-    /*
-     * void half_drive ( void )
-     * 
-     */
-    void half_drive( void );
     
     /*
      *void hm_to_step( int h , int m );
+     * 
+     * Translates hours and minutes to steps. 
      */
     int hm_to_step( int h , int m );
     

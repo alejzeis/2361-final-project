@@ -69,6 +69,9 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
 {
     _T3IF = 0;
 }
+/*
+ * one position that's close to 
+ */
 
 
 // C:\Users\sann0045\Documents\GitHub\2361-final-project\src\alarm.c
@@ -108,7 +111,15 @@ void init_PIR( void )
 }
 
 // stepper steps to hours and minutes.
+/*
+ * user input won't actually be setting the time / alarm. 
+ * will display the user's set time on the stepper, according to the turnpot.
+ * 
+ * 
+ */
 
+/* 
+ */
 
 void set_alarm( int h, int m )
 {
@@ -118,4 +129,11 @@ void set_alarm( int h, int m )
     
     // calculate the needed IC1 timer value based on h and m.
     // there are 86,400 seconds in a day.
+    
+    /*
+     * Alejandro's library;
+     * 
+     * will fetch hours and minutes from user input.
+     * 
+    */
 }

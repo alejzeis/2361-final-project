@@ -14,7 +14,6 @@
  * movements
  * track the number of detected movements after alarm onset:
  */ 
-extern volatile unsigned int movements;
 extern volatile unsigned int position; 
 
 /* 
