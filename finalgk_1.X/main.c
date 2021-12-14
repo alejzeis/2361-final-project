@@ -37,8 +37,8 @@
 }*/
 char hours[25] = {'0','1','2','3','4','5','6','7','8','9','0','1','2','3','4','5','6','7','8','9','0','1','2','3','4'};
 char tempTime;
-int displayFlag=0;
-int time=0;
+//int displayFlag=0;
+//int time=0;
 int j;
 //int i;
 //int count=0;

@@ -37,11 +37,11 @@ void lcd_init(void) {
     lcd_cmd((0b0111 << 4) + CON); // contrast C3-C0
     lcd_cmd(0b01011110); // Ion, Bon, C5-C4
     lcd_cmd(0b01101100); // follower control
-    delay(266665);
+    delaylcd(266665);
   
     lcd_cmd(0b00001100); // Display On
     lcd_cmd(0b00000001); // Clear Display
-    delay(2667);
+    delaylcd(2667);
 }
 
 void lcd_setCursor(char x, char y) {
