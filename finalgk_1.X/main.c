@@ -35,14 +35,17 @@
     putVal(ADC1BUF0);
     
 }*/
+char hours[24] = {'0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24'};
+char tempTime;
 int displayFlag=0;
 int time=0;
-int count=0;
+//int i;
+//int count=0;
 
-void __attribute__((__interrupt__, __auto_psv__)) _T3Interrupt(void) {
+/*void __attribute__((__interrupt__, __auto_psv__)) _T3Interrupt(void) {
     _T3IF = 0; TMR3 = 0;
     displayFlag=1;
-}
+}*/
 
 int main(void)
 {
@@ -52,7 +55,7 @@ int main(void)
     I2C2CONbits.I2CEN = 1;
     _I2CSIDL = 0;
     IFS3bits.MI2C2IF=0;
-    lcd_init();     
+    //lcd_init();     
     
   
   CMCON = 0x07; // To turn off comparators
@@ -80,27 +83,29 @@ int main(void)
         {
             
         }
-        /*
-      while(count<15){
-          for(i=0;i<13;i=i+1){
+        inc_one_step();
+        
+      
+        /*for(i=0;i<25;i=i+1){
             tempTime=hours[i];
         
             delay(300000);
             lcd_setCursor(1,0);
             lcd_printChar(tempTime);
             
-          }  
-          delay(10);
+          } */ 
+          /*delay(10);
           full_drive(6);
           delay(10);
           PORTB = 0b00000000;
           delay(100000);
-          count++;
+          count++;*/
+        PORTB=0;  
+        delay(60000);
       }
-      PORTB = 0b00000000;
-      delay(100000);  
-      */
      
-    }   
+      
+     
+       
   
 }
