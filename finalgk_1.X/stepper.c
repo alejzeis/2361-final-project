@@ -157,36 +157,33 @@ void round_step( void )
     position = 3;
 }
 
-void set_time(int h, int m)
+void set_time( int m )
 {
-    // fetch time with alejandro's functions
-    //int i; 
-    int desired_time_in_steps = hm_to_step( h, m );
+    int desired_time_in_steps = m_to_step( m );
+    int steps_to_adjust;
     
-    int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
+    round_step();
     
-    round_step(); 
-    
-    while ( steps_to_adjust )
+    if ( get_counts()  > desired_time_in_steps ) 
     {
+        steps_to_adjust = get_counts() - desired_time_in_steps;
         
-        steps_to_adjust--;
-    }
-    
-    /*
-      2: Set the stepper to desired time with buttons.
-     */
-    
-    /*else if ( desired_time_in_steps )
+        while ( steps_to_adjust )
+        {
+            dec_one_step(); 
+            steps_to_adjust--;
+        }
+    } 
+    else if ( get_counts() < desired_time_in_steps )
     {
+        steps_to_adjust = desired_time_in_steps - get_counts();
         
+        while ( steps_to_adjust )
+        {
+            reg_inc_one_step();
+            steps_to_adjust--;
+        }
     }
-    */
-    /*
-      3: Turn the stepper to the set time.
-     */
-    
-    t2_overflows = ((h * 60) + m ) * 60;  //number of seconds. 
 }
 
 

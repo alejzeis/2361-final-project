@@ -98,7 +98,7 @@ extern "C" {
      * 
      */
     
-    void set_time ( int h , int m );
+    void set_time ( int m );
     
     
     /* Kevin Sann , Garrett Welsch

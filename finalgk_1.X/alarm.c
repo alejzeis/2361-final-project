@@ -65,6 +65,7 @@ void __attribute__((__interrupt__, auto_psv)) _IC5Interrupt ( void )
 }
 
 // @kevinsann
+// dedicated to the alarm time.
 void __attribute__((__interrupt__, auto_psv)) _T3Interrupt( void )
 {
     _T3IF = 0;
@@ -125,9 +126,27 @@ void set_alarm( int m )
     int desired_time_in_steps = m_to_step( m );
     int steps_to_adjust;
     
+    round_step();
+    
     if ( get_counts()  > desired_time_in_steps ) 
     {
+        steps_to_adjust = get_counts() - desired_time_in_steps;
         
+        while ( steps_to_adjust )
+        {
+            dec_one_step(); 
+            steps_to_adjust--;
+        }
+    } 
+    else if ( get_counts() < desired_time_in_steps )
+    {
+        steps_to_adjust = desired_time_in_steps - get_counts();
+        
+        while ( steps_to_adjust )
+        {
+            reg_inc_one_step();
+            steps_to_adjust--;
+        }
     }
     
     // calculate the needed IC1 timer value based on h and m.
