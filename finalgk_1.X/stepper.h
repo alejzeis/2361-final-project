@@ -108,7 +108,7 @@ extern "C" {
      */
     
     void time_set ( int h , int m );
-    void inc_one_step(void);
+    void reg_inc_one_step(void);
     
     
     /* Kevin Sann , Garrett Welsch

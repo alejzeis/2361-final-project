@@ -11,6 +11,7 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+    void lcddelay(long n);
     void lcd_cmd(char command);
     void lcd_init(void);
     void lcd_setCursor(char x, char y);

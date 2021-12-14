@@ -53,7 +53,7 @@ int hm_to_step( int h, int m )
     return steps;
 }
 
-void inc_one_step( void )
+void reg_inc_one_step( void )
 {
     PORTB = p0;
     p0_counts++;
@@ -165,7 +165,7 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     }
     
     t2_overflows %= 86400;
-    delay (1);
+    delay (10);
     
     position %= 4;
 }
