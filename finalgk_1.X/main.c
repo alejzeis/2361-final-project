@@ -11,7 +11,6 @@
 #include "wait_head.h"
 #include "stdint.h"
 #include "lcd.h"
-
 #include <stdio.h>
 
 
@@ -35,9 +34,9 @@
     putVal(ADC1BUF0);
     
 }*/
-char hours[25] = {'0','1','2','3','4','5','6','7','8','9','0','1','2','3','4','5','6','7','8','9','0','1','2','3','4'};
+char hoursA[24] = {'0','1','2','3','4','5','6','7','8','9','0','1','2','3','4','5','6','7','8','9','0','1','2','3'};
 char tempTime;
-//int displayFlag=0;
+int displayFlag;
 //int time=0;
 int j;
 //int i;
@@ -74,48 +73,50 @@ int main(void)
   
     while(1)
     {
+        j=getHour();
+        displayFlag=1;
         
-        if (_IC1IF)
+        if (_T2IF==1)
         {
-            
+            displayFlag=1;
         }
         
         // change the hour display whenever the stepper has counted 
         // for one hour.
         
-        if ( displayFlag )
-        {
-            
-        }
+      
         
         //reg_inc_one_step();
         
       
-        for(j=0;j<25;j++){
-            if(j<11){
-                lcd_setCursor(0,0);
+        if(displayFlag==1){
+            lcd_setCursor(0,0);
+            lcd_printStr("Hour:");
+            
+            if(j<10){
+                lcd_setCursor(6,0);
                 lcd_printChar('0');
             }
             
             else if(j<21&&j>=10){
-                lcd_setCursor(0,0);
+                lcd_setCursor(6,0);
                 lcd_printChar('1');
                 
             }
             
             else{
-                lcd_setCursor(0,0);
+                lcd_setCursor(6,0);
                 lcd_printChar('2');
             }
             
-            tempTime=hours[j];
-            lcd_setCursor(1,0);
-            delaylcd(3000000);
-            lcd_setCursor(1,0);
+            tempTime=hoursA[j];
+            lcd_setCursor(7,0);
             lcd_printChar(tempTime);
-            
+            displayFlag=0;
+           
         }
-        j=0;
+       
+        
           /*delay(10);
           full_drive(6);
           delay(10);

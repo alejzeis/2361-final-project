@@ -3,12 +3,13 @@
 #include "stepper.h"
 #include "alarm.h"
 
+
 // Speed Range 10 to 1  10 = lowest , 1 = highest
 
-int i=0;
-long globalCount=0;
+
+
 int norm=16;
-int timeConstant=420;
+
 
 volatile unsigned int position;
 volatile unsigned int minutes;
@@ -112,6 +113,9 @@ void init_t2( void )
     
     T2CONbits.TON = 1;
 }
+unsigned int getHour(void){
+    return hours;
+}
 
 void round_step( void )
 {
@@ -120,7 +124,7 @@ void round_step( void )
         // round the stepper down, if it is at the first two positions 
         case 0:
             p0_counts--;
-            LATB = p3;
+            PORTB = p3;
             delay(10);
             
             break;
@@ -152,7 +156,7 @@ void round_step( void )
     position = 3;
 }
 
-void set_time(int h, int m)
+/*void set_time(int h, int m)
 {
     // fetch time with alejandro's functions
     //int i; 
@@ -169,9 +173,9 @@ void set_time(int h, int m)
     }
     
     while ( steps_to_adjust < )
-    /*
+    
       2: Set the stepper to desired time with buttons.
-     */
+     
     
     /*else if ( desired_time_in_steps )
     {
@@ -182,23 +186,31 @@ void set_time(int h, int m)
       3: Turn the stepper to the set time.
      */
     
-    t2_overflows = ((h * 60) + m ) * 60;  //number of seconds. 
-}
+    //t2_overflows = ((h * 60) + m ) * 60;  //number of seconds. 
+//}
 
 
  // @kevinsann
 void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
 {
+    
     _T2IF = 0;
     t2_overflows++;
     
+    
     if ( t2_overflows % 15 == 0 )
         position++;
-    if ( t2_overflows % 60 == 0 )
-        if ( t2_overflows % 3600 != 0 )
+    if ( t2_overflows % 60 == 0 ){
+        hours++;
+        if ( t2_overflows % 3600 != 0 ){
             minutes++;
-        if ( t2_overflows % 3600 == 0)
-            minutes = 0 ; hours++;
+        }    
+        if ( t2_overflows % 3600 == 0){
+            minutes = 0 ; 
+            hours++;
+        }
+                
+    }
             
     switch (position)
     {

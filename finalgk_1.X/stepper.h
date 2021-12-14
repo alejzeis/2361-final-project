@@ -20,6 +20,7 @@ extern "C" {
      * used for various stepper functions, will 
      */
     void delay(int num);
+    unsigned int getHour(void);
     
     /*
      *void hm_to_step( int h , int m );
@@ -94,7 +95,7 @@ extern "C" {
      * 
      */
     
-    void set_time ( int h , int m )
+    //void set_time ( int h , int m )
     
     
     /* Kevin Sann , Garrett Welsch

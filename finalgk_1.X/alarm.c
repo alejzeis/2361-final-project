@@ -122,7 +122,7 @@ void init_PIR( void )
 /* 
  */
 
-void set_alarm( int h, int m )
+/*void set_alarm( int h, int m )
 {
     int desired_time_in_steps = hm_to_step(  h, m )
     int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
@@ -136,4 +136,4 @@ void set_alarm( int h, int m )
      * will fetch hours and minutes from user input.
      * 
     */
-}
+//}
