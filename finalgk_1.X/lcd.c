@@ -1,11 +1,12 @@
 #include "xc.h"
 #include "lcd.h"
 #include "string.h"
+#include "wait_head.h"
 //CON should be between 0 and 0xFF.
 #define CON 0x00
 
-//Obligatory delay function
-void delay(long n){
+
+void delaylcd(long n){
     for (n=n; n>0; n--) {
         asm("nop");
     }
@@ -29,15 +30,15 @@ void lcd_cmd(char command) {
 }
 
 void lcd_init(void) {
-    delay(66666);
+    delaylcd(66666);
     lcd_cmd(0b00111000); // function set, normal instruction mode
-    lcd_cmd(0b00111001); // function set, extended instruction mode
+    lcd_cmd(0b00110101); // function set, extended instruction mode
     lcd_cmd(0b00010100); // interval osc
     lcd_cmd((0b0111 << 4) + CON); // contrast C3-C0
     lcd_cmd(0b01011110); // Ion, Bon, C5-C4
     lcd_cmd(0b01101100); // follower control
     delay(266665);
-    lcd_cmd(0b00111000); // function set, normal instruction mode
+  
     lcd_cmd(0b00001100); // Display On
     lcd_cmd(0b00000001); // Clear Display
     delay(2667);
