@@ -6,10 +6,8 @@
 
 // Speed Range 10 to 1  10 = lowest , 1 = highest
 
-
-
 int norm=16;
-
+int timeConstant=420;
 
 volatile unsigned int position;
 volatile unsigned int minutes;
@@ -129,6 +127,7 @@ void round_step( void )
         // round the stepper down, if it is at the first two positions 
         case 0:
             p0_counts--;
+            LATB = p3;
             PORTB = p3;
             delay(10);
             
@@ -161,19 +160,25 @@ void round_step( void )
     position = 3;
 }
 
+void set_time( int m )
 /*void set_time(int h, int m)
 {
-    // fetch time with alejandro's functions
-    //int i; 
-    int desired_time_in_steps = hm_to_step( h, m );
+    int desired_time_in_steps = m_to_step( m );
+    int steps_to_adjust;
     
-    int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
+    round_step();
     
-    round_step(); 
-    
-    while ( steps_to_adjust )
+    if ( get_counts()  > desired_time_in_steps ) 
     {
+        steps_to_adjust = get_counts() - desired_time_in_steps;
         
+        while ( steps_to_adjust )
+        {
+            dec_one_step(); 
+            steps_to_adjust--;
+        }
+    } 
+    else if ( get_counts() < desired_time_in_steps )
         steps_to_adjust--;
     }
     
@@ -183,8 +188,15 @@ void round_step( void )
     
     /*else if ( desired_time_in_steps )
     {
+        steps_to_adjust = desired_time_in_steps - get_counts();
         
+        while ( steps_to_adjust )
+        {
+            reg_inc_one_step();
+            steps_to_adjust--;
+        }
     }
+}
     */
     /*
       3: Turn the stepper to the set time.
@@ -204,9 +216,13 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     
     if ( t2_overflows % 15 == 0 )
         position++;
+    if ( t2_overflows % 60 == 0 )
+        if ( t2_overflows % 3600 != 0 )
     if ( t2_overflows % 60 == 0 ){
         if ( t2_overflows % 3600 != 0 ){
             minutes++;
+        if ( t2_overflows % 3600 == 0)
+            minutes = 0 ; hours++;
         }    
         if ( t2_overflows % 3600 == 0){
             minutes = 0 ; 
