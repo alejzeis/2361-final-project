@@ -20,12 +20,15 @@ extern "C" {
      * used for various stepper functions, will 
      */
     void delay(int num);
-    unsigned int getHour(void);
+    
+    /*
+     */
+    int get_counts( void );
     
     /*
      *void hm_to_step( int h , int m );
      */
-    int hm_to_step( int h , int m );
+    int m_to_step( int m );
     
     
     /*
@@ -95,7 +98,7 @@ extern "C" {
      * 
      */
     
-    //void set_time ( int h , int m )
+    void set_time ( int h , int m );
     
     
     /* Kevin Sann , Garrett Welsch
@@ -104,7 +107,7 @@ extern "C" {
     * t2_interrupt will test when to transition between states.
     * increment position whenever t2_overflows % 15 == 0.
     */
-    void __attribute__((interrupt, auto_psv)) _T2Interrupt( void );
+    void __attribute__(( __interrupt__, auto_psv)) _T2Interrupt( void );
     
     
     

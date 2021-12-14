@@ -19,14 +19,13 @@
  * t2_overflows
  * overflows track the alarm time.
  */
-extern volatile unsigned long t2_overflows;
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
-    void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void );
-    void __attribute__((interrupt, auto_psv)) _IC5Interrupt ( void );
-    void __attribute__((interrupt, auto_psv)) _T3Interrupt( void );
+    void __attribute__((__interrupt__, auto_psv)) _OC5Interrupt ( void );
+    void __attribute__((__interrupt__, auto_psv)) _IC5Interrupt ( void );
+    void __attribute__((__interrupt__, auto_psv)) _T3Interrupt( void );
     
     
     /* Timer 2, Garrett: Resetting the Time. */

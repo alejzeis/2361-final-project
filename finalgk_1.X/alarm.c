@@ -50,7 +50,7 @@ volatile unsigned int movements;
  * _
  */
 
-void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void )
+void __attribute__((__interrupt__, auto_psv)) _OC5Interrupt ( void )
 {
     _OC5IF = 0;
     
@@ -59,13 +59,13 @@ void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void )
 
 // configured for every edge, rising and falling
 // @kevinsann
-void __attribute__((interrupt, auto_psv)) _IC5Interrupt ( void )
+void __attribute__((__interrupt__, auto_psv)) _IC5Interrupt ( void )
 {
     _IC5IF = 0;
 }
 
 // @kevinsann
-void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
+void __attribute__((__interrupt__, auto_psv)) _T3Interrupt( void )
 {
     _T3IF = 0;
 }
@@ -113,19 +113,22 @@ void init_PIR( void )
 
 // stepper steps to hours and minutes.
 /*
+ * void set_alarm( int m )
  * user input won't actually be setting the time / alarm. 
  * will display the user's set time on the stepper, according to the turnpot.
  * 
- * set the alarm according to a 
+ * set the alarm according to a spontaneous input from alejandro's library.
  */
 
-/* 
- */
-
-/*void set_alarm( int h, int m )
+void set_alarm( int m )
 {
-    int desired_time_in_steps = hm_to_step(  h, m )
-    int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
+    int desired_time_in_steps = m_to_step( m );
+    int steps_to_adjust;
+    
+    if ( get_counts()  > desired_time_in_steps ) 
+    {
+        
+    }
     
     // calculate the needed IC1 timer value based on h and m.
     // there are 86,400 seconds in a day.
