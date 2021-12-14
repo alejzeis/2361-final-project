@@ -57,6 +57,11 @@ void dec_one_step( void )
     delay(1);
 }
 
+int get_counts( void )
+{
+    return p0_counts + p1_counts + p2_counts + p3_counts;
+}
+
 int m_to_step( int m )
 {
     int steps;
@@ -168,7 +173,6 @@ void set_time(int h, int m)
         steps_to_adjust--;
     }
     
-    while ( steps_to_adjust < )
     /*
       2: Set the stepper to desired time with buttons.
      */
