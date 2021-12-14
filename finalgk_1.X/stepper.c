@@ -11,12 +11,20 @@ int norm=16;
 int timeConstant=420;
 
 volatile unsigned int position;
+volatile unsigned int minutes;
+volatile unsigned int hours;
 volatile unsigned long int t2_overflows;
 
 unsigned int p0_counts;
 unsigned int p1_counts;
 unsigned int p2_counts;
 unsigned int p3_counts;
+
+/*
+ * see if an hour has passed in t2_interrupts
+ * 
+ * if it has, we throw a flag for I2C display to update.
+ */
 
 // Garrett Welsch
 void delay(int num){
@@ -82,6 +90,9 @@ void initStepper( void ){
     p1_counts = 0;
     p2_counts = 0;
     p3_counts = 0;
+    
+    hours = 0;
+    minutes = 0;
 }
 
 
@@ -98,20 +109,39 @@ void init_t2( void )
     T2CONbits.TON = 1;
 }
 
+void round_step( void )
+{
+    switch (position)
+    {
+        // round the stepper down, if it is at the first two positions 
+        case 0:
+            p0_counts--;
+            break;
+        case 1:
+            p0_counts--; // position 1: 30 seconds.
+            p1_counts--;
+            break;
+        
+        // round the stepper up, if it is at the last two positions.
+        case 2:
+            PORTB = p2; // position 2: 45 seconds.
+            p2_counts++;
+            break;
+        case 3:
+            PORTB = p3; // position 3: 60 seconds.
+            p3_counts++;
+            break;
+    }
+        
+}
 
-
-
- 
 void set_time(int h, int m)
 {
+    // fetch time with alejandro's functions
     //int i; 
     int desired_time_in_steps = hm_to_step( h, m );
     
     int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
-    
-    /*
-      1: Enter set time mode--IC1Interrupt
-     */
     
     while (steps_to_adjust)
     {
@@ -143,7 +173,12 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     
     if ( t2_overflows % 15 == 0 )
         position++;
-
+    if ( t2_overflows % 60 == 0 )
+        if ( t2_overflows % 3600 != 0 )
+            minutes++;
+        if ( t2_overflows % 3600 == 0)
+            minutes = 0 ; hours++;
+            
     switch (position)
     {
         case 0:
@@ -167,17 +202,10 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
     t2_overflows %= 86400;
     delay (1);
     
+    if ( t2_overflows == 0 )
+        minutes = 0, hours = 0;
+    
     position %= 4;
 }
 
-/*void startClock(void){
-    full_drive(norm);
-    displayFlag=0;
-}*/
 
-
-    
-    
-
-
-//use input pulses for speed??

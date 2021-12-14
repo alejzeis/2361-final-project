@@ -1,5 +1,3 @@
-
-
 // This is a guard condition so that contents of this file are not included
 // more than once.  
 #ifndef STEPPER_H
@@ -11,12 +9,6 @@
 #define p1 0b0110000000000000
 #define p2 0b1100000000000000
 #define p3 0b1001000000000000
-
-extern unsigned int p0_counts;
-extern unsigned int p1_counts;
-extern unsigned int p2_counts;
-extern unsigned int p3_counts;
-
 
 #ifdef	__cplusplus
 extern "C" {
@@ -30,7 +22,13 @@ extern "C" {
     void delay(int num);
     
     /*
-    * void full_drive( void )
+     *void hm_to_step( int h , int m );
+     */
+    int hm_to_step( int h , int m );
+    
+    
+    /*
+    * void inc_one_step( void )
     * 
     * Intent: Make a step on the stepper every 60 seconds.
     * 
@@ -41,25 +39,8 @@ extern "C" {
     * 
     * 
     */
+    void inc_one_step(void);
     
-    void full_drive( void );
-    
-    /*
-     * void half_drive ( void )
-     * 
-     */
-    void half_drive( void );
-    
-    /*
-     *void hm_to_step( int h , int m );
-     */
-    int hm_to_step( int h , int m );
-    
-    
-    /*
-     * void __attribute__((interrupt, auto_psv)) _IC1Interrupt ( void )
-     */
-    void __attribute__((interrupt, auto_psv)) _IC1Interrupt ( void );
     
     /*
      * void init_t2( void );
@@ -83,9 +64,15 @@ extern "C" {
      */
     void initStepper(void);
     
+    /* void round_step( void );
+     * 
+     * will round the stepper to the nearest minute position.
+     */
+    
+    void round_step( void );
     
     /*
-     * void time_set (int h, int m);
+     * void set_time (int h, int m);
      * 
      * Will change t2_overflows, will change p*_count.
      * 
@@ -107,8 +94,7 @@ extern "C" {
      * 
      */
     
-    void time_set ( int h , int m );
-    void inc_one_step(void);
+    void set_time ( int h , int m )
     
     
     /* Kevin Sann , Garrett Welsch

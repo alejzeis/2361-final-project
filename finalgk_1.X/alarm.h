@@ -13,8 +13,7 @@
 /*
  * movements
  * track the number of detected movements after alarm onset:
- */ 
-extern volatile unsigned int position; 
+ */
 
 /* 
  * t2_overflows

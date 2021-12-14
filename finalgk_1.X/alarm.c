@@ -77,6 +77,7 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt( void )
 // C:\Users\sann0045\Documents\GitHub\2361-final-project\src\alarm.c
 
 // ALARM is set up in PWM mode.
+// PWM BUZZER. 
 void init_alarm( void )
 {
     __builtin_write_OSCCONL(OSCCON & 0xbf);
@@ -84,12 +85,12 @@ void init_alarm( void )
     __builtin_write_OSCCONL(OSCCON | 0x40);
     
     T3CON = 0; // 
-    TMR3 = 0;
-    PR3 = 
+    TMR3 = 0; // 
+    PR3 = 1; // 
     
     // set RP8 as output.
     TRISBbits.TRISB8 = 0;
-     
+    
 }
 
 void init_PIR( void )
@@ -97,16 +98,16 @@ void init_PIR( void )
     // input = RP7
     
     __builtin_write_OSCCONL(OSCCON & 0xbf);
-    RPINR7bits.IC1R = 7;// IC5 input = RP7
+    RPINR9bits.IC5R = 7;// IC5 input = RP7
     __builtin_write_OSCCONL(OSCCON | 0x40);
     
     TRISBbits.TRISB7 = 1; // RP7 = input.
     CNPU2bits.CN23PUE = 1; // enable Change Notification on RP7.
     
-    IC1CON = 0;
-    IC1CONbits.ICSIDL = 1; // halt in CPU idle mode.
-    IC1CONbits.ICTMR = 0; // TMR3 Contents captured
-    IC1CONbits.ICM = 001; // Every Rising and Falling Edge Captured
+    IC5CON = 0;
+    IC5CONbits.ICSIDL = 1; // halt in CPU idle mode.
+    IC5CONbits.ICTMR = 0; // TMR3 Contents captured
+    IC5CONbits.ICM = 001; // Every Rising and Falling Edge Captured
     
 }
 
@@ -115,7 +116,7 @@ void init_PIR( void )
  * user input won't actually be setting the time / alarm. 
  * will display the user's set time on the stepper, according to the turnpot.
  * 
- * 
+ * set the alarm according to a 
  */
 
 /* 
@@ -123,8 +124,7 @@ void init_PIR( void )
 
 void set_alarm( int h, int m )
 {
-    int desired_time_in_steps = hm_to_step(  h, m );
-    
+    int desired_time_in_steps = hm_to_step(  h, m )
     int steps_to_adjust = p0_counts + p1_counts + p2_counts + p3_counts - desired_time_in_steps;
     
     // calculate the needed IC1 timer value based on h and m.
