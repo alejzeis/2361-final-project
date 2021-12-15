@@ -1,169 +1,187 @@
-#include "wait_head.h"
 #include "xc.h"
 #include "stepper.h"
-#include "alarm.h"
 
-
-// Speed Range 10 to 1  10 = lowest , 1 = highest
-
-int norm=16;
-int timeConstant=420;
-
-volatile unsigned int position;
 volatile unsigned int minutes;
 volatile unsigned int hours;
 volatile unsigned long int t2_overflows;
-
-
-/*
- * p*_counts synchronize the stepper so we know what specific position it is at.
- */
-unsigned int p0_counts;
-unsigned int p1_counts;
-unsigned int p2_counts;
-unsigned int p3_counts;
+volatile unsigned int rel_position;
 
 /*
- * see if an hour has passed in t2_interrupts
- * 
- * if it has, we throw a flag for I2C display to update.
+ * pos_counts[0-3] synchronize the stepper so we know what specific minute
+ * the stepper is at.
  */
 
-// Garrett Welsch
-void delay(int num){
+unsigned int pos_counts[4];
+unsigned int positions[4];
+
+unsigned int f_tick;
+
+void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
+{
+    
+    _T2IF = 0;
+    t2_overflows++;
+    
+    if ( t2_overflows % 15 == 0 )
+    {
+        rel_position++;
+        f_tick = 1;
+    }
+    if ( t2_overflows % 60 == 0 )
+    {
+        if ( t2_overflows % 3600 != 0 )
+            minutes++;
+        
+        if ( t2_overflows % 3600 == 0)
+            minutes = 0 ; hours++;
+    }
+    
+    if ( t2_overflows % 86400 ) // time resets at the end of each day.
+    {
+        t2_overflows = 0;
+        minutes = 0, hours = 0;
+    }
+    
+    rel_position %= 4;
+}
+
+void delay( int num )
+{
     int count=0;
-    for(count=0;count<num;count++){
+    
+    for(count=0;count<num;count++)
+    {
         wait_1ms();
     }
 }
 
 void dec_one_step( void )
 {   
-    PORTB = p3;
-    p0_counts--;
-    delay(1);
+    int i;
     
-    PORTB = p2;
-    p1_counts--;
-    delay(1);
-    
-    PORTB = p1;
-    p2_counts--;
-    delay(1);
-    
-    PORTB = p0;
-    p3_counts--;
-    delay(1);
+    for ( i = 3; i >= 0; i-- )
+    {
+        PORTB = positions[i];
+        pos_counts[i]--;
+        delay( 10 );
+    }
 }
 
-int get_counts( void )
+void default_counts( void )
 {
-    return p0_counts + p1_counts + p2_counts + p3_counts;
+    int i;
+    
+    for (i = 0; i < sizeof pos_counts; i++)
+        pos_counts[i] = 0;
 }
 
-int m_to_step( int m )
+unsigned int get_counts( void )
 {
-    int steps;
+    int i;
+    int sum = 0;
     
-    steps = m * 4;
-    return steps;
+    for (i = 0; i < 4; i++)
+        sum += pos_counts[i];
+    return sum;
 }
 
-void inc_one_step( void )
+void initStepper( unsigned int ordered_positions[] )
 {
-    PORTB = p0;
-    p0_counts++;
-    delay(10);
+    int i;
     
-    PORTB = p1;
-    p1_counts++;
-    delay(10);
+    unsigned int bitwise_pos = 0;
+    unsigned int selected_pos = 0;
     
-    PORTB = p2;
-    p2_counts++;
-    delay(10);
+    for ( i = 0 ; i < 4; i++ )
+    {
+        selected_pos |= ordered_positions[i];
+    }
     
-    PORTB = p3;
-    p3_counts++;
-    delay(10);
-}
+    for (i = 0; i < 16; i++) 
+    {
+        LATB |= (1 << bitwise_pos); // SET INITIAL PORT STATES TO HIGH.
+        TRISB &= (0 << bitwise_pos); // SET PORTS AS OUTPUTS.
 
-void initStepper( void ){
-    PORTB=0x0f;
-    TRISB=0;
+        bitwise_pos++;
+    }
+
+    rel_position = 0;
     
-    position = 0;
-    
-    p0_counts = 0;
-    p1_counts = 0;
-    p2_counts = 0;
-    p3_counts = 0;
+    default_counts(); // sets the counts for all positions to 0.
     
     hours = 0;
     minutes = 0;
 }
 
-
 void init_t2( void )
 {
     TMR2 = 0;
     T2CON = 0;
-    T2CONbits.TCKPS = 0b11;
-    PR2 = 62500;
+    T2CONbits.TCKPS = 0b11; // prescale 1:256
+    PR2 = 62500; // 1 second period.
     
     _T2IF = 0;
+    _T2IP = 6; // highest priority interrupt to increment global timer T2.
     _T2IE = 1;
     
     T2CONbits.TON = 1;
 }
-unsigned int getHour(void){
-    return hours;
+
+void reg_inc_one_step( void )
+{
+    int i;
+    for ( i = 0; i <= 3; i++ )
+    {
+        PORTB = positions[ i ];
+        pos_counts[ i ]++;
+        delay( 10 );
+    }
 }
 
 void round_step( void )
 {
-    switch (position)
+    switch (rel_position)
     {
         // round the stepper down, if it is at the first two positions 
         case 0:
-            p0_counts--;
-            LATB = p3;
-            PORTB = p3;
+            pos_counts[0]--;
+            
+            PORTB = positions[3];
             delay(10);
             
             break;
         case 1:
-            p0_counts--; // position 1: 30 seconds.
-            p1_counts--;
+            pos_counts[0]--; // position 1: 30 seconds.
+            pos_counts[1]--;
             
-            PORTB = p0;
+            PORTB = positions[0];
             delay(10);
-            PORTB = p3;
+            PORTB = positions[3];
             delay(10);
             
             break;
         
-        // round the stepper up, if it is at the last two positions.
-        case 2:
+        case 2: // round the stepper up, if it is at the second to last relative 
+                // position.
             // position 2: 45 seconds. 
-            p2_counts++;
-            p3_counts++;
+            pos_counts[2]++;
+            pos_counts[3]++;
             
-            PORTB = p3;
+            PORTB = positions[3];
             delay(10);
             
             break;
-        case 3:
+        case 3: // if the stepper is at the last position, don't round.
             break;
     }
     
-    position = 3;
+    rel_position = 3;
 }
 
 void set_time( int m )
-/*void set_time(int h, int m)
 {
-    int desired_time_in_steps = m_to_step( m );
+    int desired_time_in_steps = m; // it is desired to set the minutes for the 
+                                   // stepper.
     int steps_to_adjust;
     
     round_step();
@@ -178,15 +196,8 @@ void set_time( int m )
             steps_to_adjust--;
         }
     } 
-    else if ( get_counts() < desired_time_in_steps )
-        steps_to_adjust--;
-    }
     
-    /*
-      2: Set the stepper to desired time with buttons.
-     
-    
-    /*else if ( desired_time_in_steps )
+    else if ( desired_time_in_steps < get_counts() )
     {
         steps_to_adjust = desired_time_in_steps - get_counts();
         
@@ -197,67 +208,37 @@ void set_time( int m )
         }
     }
 }
-    */
-    /*
-      3: Turn the stepper to the set time.
-     */
-    
-    //t2_overflows = ((h * 60) + m ) * 60;  //number of seconds. 
-//}
 
-
- // @kevinsann
-void __attribute__((interrupt, auto_psv)) _T2Interrupt( void )
+void set_time_t2( int h , int m ) 
 {
-    
-    _T2IF = 0;
-    t2_overflows++;
-    
-    
-    if ( t2_overflows % 15 == 0 )
-        position++;
-    if ( t2_overflows % 60 == 0 )
-        if ( t2_overflows % 3600 != 0 )
-    if ( t2_overflows % 60 == 0 ){
-        if ( t2_overflows % 3600 != 0 ){
-            minutes++;
-        if ( t2_overflows % 3600 == 0)
-            minutes = 0 ; hours++;
-        }    
-        if ( t2_overflows % 3600 == 0){
-            minutes = 0 ; 
-            hours++;
-        }
-                
-    }
-            
-    switch (position)
-    {
-        case 0:
-            PORTB = p0;// position 0: 15 seconds.
-            p0_counts++;
-            break;
-        case 1:
-            PORTB = p1; // position 1: 30 seconds.
-            p1_counts++;
-            break;
-        case 2:
-            PORTB = p2; // position 2: 45 seconds.
-            p2_counts++;
-            break;
-        case 3:
-            PORTB = p3; // position 3: 60 seconds.
-            p3_counts++;
-            break;
-    }
-    
-    t2_overflows %= 86400;
-    delay (1);
-    
-    if ( t2_overflows == 0 )
-        minutes = 0, hours = 0;
-    
-    position %= 4;
+    t2_overflows = ( h * 3600 ) + ( m * 60 );  //number of seconds.
+    hours = h;
+    minutes = m;
 }
 
+void tick ( void )
+{
+    if ( f_tick )
+    {
+        switch (rel_position) 
+        {
+            case 0:
+                PORTB = positions[0]; // rel_position 0: 15 seconds.
+                break;
+            case 1:
+                PORTB = positions[1]; // rel_position 1: 30 seconds.
+                break;
+            case 2:
+                PORTB = positions[2]; // rel_position 2: 45 seconds.
+                break;
+            case 3:
+                PORTB = positions[3]; // rel_position 3: 60 seconds.
+                break;
+        }
+        delay(10);
 
+        pos_counts[rel_position]++; // increments the number of counts
+                                    // tracked for the current relative position.
+        f_tick = 0;
+    }
+}

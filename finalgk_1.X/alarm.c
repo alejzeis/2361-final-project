@@ -47,7 +47,7 @@ volatile unsigned int movements;
 /* PIR functions:
  * _OC5Interrupt,
  * _IC5Interrupt,
- * _
+ * 
  */
 
 void __attribute__((__interrupt__, auto_psv)) _OC5Interrupt ( void )
@@ -65,20 +65,19 @@ void __attribute__((__interrupt__, auto_psv)) _IC5Interrupt ( void )
 }
 
 // @kevinsann
-// dedicated to the alarm time.
+// dedicated to the alarm PWM time.
 void __attribute__((__interrupt__, auto_psv)) _T3Interrupt( void )
 {
     _T3IF = 0;
 }
-/*
- * one position that's close to 
- */
-
 
 // C:\Users\sann0045\Documents\GitHub\2361-final-project\src\alarm.c
 
-// ALARM is set up in PWM mode.
-// PWM BUZZER. 
+/*
+ * void init_alarm( void )
+ * 
+ * 
+ */
 void init_alarm( void )
 {
     __builtin_write_OSCCONL(OSCCON & 0xbf);
@@ -94,7 +93,7 @@ void init_alarm( void )
     
 }
 
-void init_PIR( void )
+void init_PIR( unsigned int n )
 {
     // input = RP7
     
@@ -112,18 +111,9 @@ void init_PIR( void )
     
 }
 
-// stepper steps to hours and minutes.
-/*
- * void set_alarm( int m )
- * user input won't actually be setting the time / alarm. 
- * will display the user's set time on the stepper, according to the turnpot.
- * 
- * set the alarm according to a spontaneous input from alejandro's library.
- */
-
-/*void set_alarm( int m )
+void set_alarm( int m )
 {
-    int desired_time_in_steps = m_to_step( m );
+    int desired_time_in_steps = m;
     int steps_to_adjust;
     
     round_step();
@@ -158,4 +148,4 @@ void init_PIR( void )
      * will fetch hours and minutes from user input.
      * 
     */
-//}
+}

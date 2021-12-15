@@ -73,12 +73,9 @@ int main(void)
   
     while(1)
     {
-        j=getHour();
-        
-        
         if (_T2IF==1)
         {
-            displayFlag=1;
+            
         }
         
         // change the hour display whenever the stepper has counted 

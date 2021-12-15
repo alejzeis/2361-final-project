@@ -23,20 +23,51 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-    void __attribute__((__interrupt__, auto_psv)) _OC5Interrupt ( void );
-    void __attribute__((__interrupt__, auto_psv)) _IC5Interrupt ( void );
-    void __attribute__((__interrupt__, auto_psv)) _T3Interrupt( void );
-    
-    
-    /* Timer 2, Garrett: Resetting the Time. */
-    /* void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void );
+    /* 
+     * void __attribute__((interrupt, auto_psv)) _OC5Interrupt ( void );
      * 
      */
     
-    void init_alarm( void );
-    void init_PIR( void );
+    void __attribute__((__interrupt__, auto_psv)) _OC5Interrupt ( void );
     
-    void set_alarm( int h , int m );
+    /*
+     * void __attribute__((__interrupt__, auto_psv)) _IC5Interrupt ( void );
+     */
+    void __attribute__((__interrupt__, auto_psv)) _IC5Interrupt ( void );
+    
+    /*
+     * void __attribute__((__interrupt__, auto_psv)) _T3Interrupt( void );
+     */
+    void __attribute__((__interrupt__, auto_psv)) _T3Interrupt( void );
+    
+    
+    /*
+    * void init_alarm( void )
+    * 
+    * 
+    */
+    
+    void init_alarm( void );
+    
+    /*
+     * void init_PIR( void )
+     * 
+     * initializes PIR with RPn, where 
+     * 
+     */
+    void init_PIR( unsigned int n );
+    
+    /*
+     * void set_alarm( int m )
+     * 
+     * user input won't actually be setting the time / alarm. 
+     * will display the user's set time on the stepper, according to the turnpot.
+     * 
+     * set the alarm according to a spontaneous input from alejandro's library.
+     * The stepper will follow the 
+     */
+
+    void set_alarm( int m );
 
 #ifdef	__cplusplus
 }
